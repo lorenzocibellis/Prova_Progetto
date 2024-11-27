@@ -17,6 +17,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,13 +25,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 /**
@@ -69,6 +74,12 @@ public class MyStudentListViewController implements Initializable {
     private Button single;
     @FXML
     private Button info;
+    @FXML
+    private SplitPane pane;
+    @FXML
+    private MenuItem close;
+
+
     
     
     
@@ -93,14 +104,25 @@ public class MyStudentListViewController implements Initializable {
     
         single.disableProperty().set(true); //all'apertura disabilita il pulsante di selezione singola 
         
-        codeField.setOnKeyPressed(event-> {
+        
+        EventHandler<KeyEvent> enterHandler = event-> { //Evento di inserimento con tasto ENTER- nome: enterHandler
             if(event.getCode() == javafx.scene.input.KeyCode.ENTER)
             try {
                 addStudent(null);
             } catch (IOException ex) {
                 Logger.getLogger(MyStudentListViewController.class.getName()).log(Level.SEVERE, null, ex);
             }
-        });
+        };
+        
+        pane.setOnKeyPressed(enterHandler);
+        studentsTable.setOnKeyPressed(enterHandler); 
+        
+        EventHandler<KeyEvent> cancHandler = event-> { //Evento di cancellazione con tasto D- nome : cancHandler
+            if(event.getCode() == javafx.scene.input.KeyCode.D)
+                delStudent(null);
+        };
+        
+        studentsTable.setOnKeyPressed(cancHandler);
     }    
 
     @FXML
@@ -184,5 +206,9 @@ public class MyStudentListViewController implements Initializable {
         avviso.show();
 
         
+    }
+
+    @FXML
+    private void closeApp(ActionEvent event) {
     }
 }
