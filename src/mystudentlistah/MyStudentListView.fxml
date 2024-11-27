@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mystudentlistah.MyStudentListViewController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <VBox layoutX="67.0" layoutY="155.0" prefHeight="213.0" prefWidth="100.0" spacing="15.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0">
+               <children>
+                  <MenuBar>
+                    <menus>
+                      <Menu mnemonicParsing="false" text="File">
+                        <items>
+                          <MenuItem mnemonicParsing="false" text="Close" />
+                        </items>
+                      </Menu>
+                        <Menu mnemonicParsing="false">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Close" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Close" />
+                           </items>
+                        </Menu>
+                    </menus>
+                  </MenuBar>
+                  <Label text="Nome" />
+                  <TextField fx:id="nameField" />
+                  <Label layoutX="10.0" layoutY="10.0" text="Cognome" />
+                  <TextField fx:id="surnameField" layoutX="10.0" layoutY="27.0" />
+                  <Label layoutX="10.0" layoutY="54.0" text="Matricola" />
+                  <TextField fx:id="codeField" layoutX="10.0" layoutY="71.0" />
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <Button fx:id="addButton" mnemonicParsing="false" onAction="#addStudent" text="Aggiungi" />
+                              <Button fx:id="delButton" mnemonicParsing="false" onAction="#delStudent" text="Rimuovi" />
+                           </children>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                        </HBox>
+                        <Button fx:id="single" alignment="CENTER" mnemonicParsing="false" onAction="#deactivateMul" text="Attiva modalità singola" />
+                        <Button fx:id="multiple" alignment="CENTER" layoutX="75.0" layoutY="71.0" mnemonicParsing="false" onAction="#multipleOn" text="Attiva modalità multipla" />
+                        <Button fx:id="info" alignment="CENTER" layoutX="28.0" layoutY="122.0" mnemonicParsing="false" onAction="#openInfo" text="Apri info" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <TableView fx:id="studentsTable" editable="true" layoutX="223.0" layoutY="149.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+              <columns>
+                <TableColumn fx:id="nameClm" prefWidth="75.0" text="Nome" />
+                <TableColumn fx:id="surnameClm" prefWidth="75.0" text="Cognome" />
+                  <TableColumn fx:id="codeClm" prefWidth="75.0" text="Matricola" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </children>
+      </AnchorPane>
+  </items>
+</SplitPane>
