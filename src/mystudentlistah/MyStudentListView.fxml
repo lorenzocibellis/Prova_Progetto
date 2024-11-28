@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mystudentlistah.MyStudentListViewController">
+<SplitPane fx:id="pane" dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mystudentlistah.MyStudentListViewController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
@@ -17,7 +17,7 @@
                     <menus>
                       <Menu mnemonicParsing="false" text="File">
                         <items>
-                          <MenuItem mnemonicParsing="false" text="Close" />
+                          <MenuItem fx:id="close" mnemonicParsing="false" onAction="#closeApp" text="Close" />
                         </items>
                       </Menu>
                         <Menu mnemonicParsing="false">
