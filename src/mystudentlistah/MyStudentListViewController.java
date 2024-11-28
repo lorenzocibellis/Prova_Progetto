@@ -32,6 +32,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -117,12 +120,24 @@ public class MyStudentListViewController implements Initializable {
         pane.setOnKeyPressed(enterHandler);
         studentsTable.setOnKeyPressed(enterHandler); 
         
-        EventHandler<KeyEvent> cancHandler = event-> { //Evento di cancellazione con tasto D- nome : cancHandler
-            if(event.getCode() == javafx.scene.input.KeyCode.D)
+        EventHandler<KeyEvent> cancHandler = event-> { //Evento di cancellazione con combinazione Control+D- nome : cancHandler
+            KeyCombination C_d = new KeyCodeCombination(KeyCode.D , KeyCombination.CONTROL_DOWN); // crea la combinazione di tasti
+            if(C_d.match(event)) //controlla che l'evento sia scatenato dalla combinazione
                 delStudent(null);
         };
         
         studentsTable.setOnKeyPressed(cancHandler);
+        
+        EventHandler<MouseEvent> doubleClickHandler = event ->{ //Evento di apertura studente con doppio click
+            if(event.getClickCount() == 2) //controlla il numero di click
+                try {
+                    openInfo(null); //apre lo studente
+            } catch (IOException ex) {
+                Logger.getLogger(MyStudentListViewController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        };
+        
+        studentsTable.setOnMouseClicked(doubleClickHandler);
     }    
 
     @FXML
