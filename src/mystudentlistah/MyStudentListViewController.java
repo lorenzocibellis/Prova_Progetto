@@ -25,6 +25,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.SplitPane;
@@ -80,7 +81,7 @@ public class MyStudentListViewController implements Initializable {
     @FXML
     private SplitPane pane;
     @FXML
-    private MenuItem close;
+    private MenuBar menu;
 
 
     
@@ -138,6 +139,7 @@ public class MyStudentListViewController implements Initializable {
         };
         
         studentsTable.setOnMouseClicked(doubleClickHandler);
+        
     }    
 
     @FXML
@@ -203,13 +205,21 @@ public class MyStudentListViewController implements Initializable {
 
     @FXML
     private void openInfo(ActionEvent event) throws IOException {
-       // ((Stage)info.getScene().getWindow()).close();
+        
+
+        Student temp = studentsTable.getSelectionModel().getSelectedItem();
+                
+        if(temp == null)
+            return;
+        
+       ((Stage)info.getScene().getWindow()).close();
         FXMLLoader base = new FXMLLoader(getClass().getResource("/accesso/AccessStudente.fxml"));
         Parent root = base.load();
         
         AccessStudenteController ctr = base.getController();
         
-        ctr.set(studentsTable.getSelectionModel().getSelectedItem());
+        
+        ctr.set(temp, info.getScene());
         
         Scene scene = new Scene(root);
         Stage avviso = new Stage();
@@ -225,5 +235,6 @@ public class MyStudentListViewController implements Initializable {
 
     @FXML
     private void closeApp(ActionEvent event) {
+        ((Stage) menu.getScene().getWindow()).close(); //Prendo un oggetto a caso su cui usare la funzione di close
     }
 }
