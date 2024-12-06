@@ -35,15 +35,27 @@ public class ContattoController extends Controller{
 
    // non è necessario un costruttore
     //metodi
-    public void setController(){}
+    public void setController(){
     
-    public void setController(Contatto c){}
+    }
     
-    public void disableModify(){}
+    public void setController(Contatto c){
     
-    private void confirm(ActionEvent c){}
+    }
     
-    private void modify(ActionEvent c){}
+    public void disableModify(){
     
-    private void delete(ActionEvent c){}
+    }
+    
+    private void confirm(ActionEvent c){
+    
+    }
+    
+    private void modify(ActionEvent c){
+    
+    }
+    
+    private void delete(ActionEvent c){
+    
+    }
 }

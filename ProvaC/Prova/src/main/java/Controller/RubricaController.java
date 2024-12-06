@@ -26,19 +26,33 @@ public class RubricaController extends Controller{
 
    
     //metodi
-    private void setRubricaList(Rubrica r){}
+    private void setRubricaList(Rubrica r){
     
-    private void add(ActionEvent e){}
+    }
     
-    private void research(ActionEvent e){}
+    private void add(ActionEvent e){
     
-    private void delete(ActionEvent e){}
+    }
     
-    private void openContact(ActionEvent e){}
+    private void research(ActionEvent e){
     
-    private void exportRubrica(ActionEvent e){}
+    }
     
-    private void importRubrica(ActionEvent e){}
+    private void delete(ActionEvent e){
+    
+    }
+    
+    private void openContact(ActionEvent e){
+    
+    }
+    
+    private void exportRubrica(ActionEvent e){
+    
+    }
+    
+    private void importRubrica(ActionEvent e){
+    
+    }
     
     
 }

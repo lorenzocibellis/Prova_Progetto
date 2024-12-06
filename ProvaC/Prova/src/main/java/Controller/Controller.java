@@ -16,9 +16,13 @@ import javafx.scene.Parent;
 public abstract class Controller {
     
     //metodi
-    private void display(Parent p){}
+    private void display(Parent p){
     
-    private void goBack(){}
+    }
+    
+    private void goBack(){
+    
+    }
     
     
 }

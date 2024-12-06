@@ -19,18 +19,24 @@ public class Rubrica {
     public Rubrica(){}
     
     public boolean aggiungiContatto(Contatto c){
-        //DA COMPLETARE
+      
        
     }
     
     public boolean rimuoviContatto(ObservableList<Contatto> list){
-        //DA COMPLETARE
+        
        
     }
     
-    public Rubrica ricercaContatti(String s){}
+    public Rubrica ricercaContatti(String s){
     
-    public void importaRubrica(){}
-    public void esportaRubrica(){}
+    }
+    
+    public void importaRubrica(){
+    
+    }
+    public void esportaRubrica(){
+    
+    }
     
 }
