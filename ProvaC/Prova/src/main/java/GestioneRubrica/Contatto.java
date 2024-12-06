@@ -72,11 +72,6 @@ public class Contatto implements Comparable<Contatto> {
         
     }
     
-    
-    @Override
-    public int hashCode(){
-    }
-    
     @Override
     public int compareTo(Contatto o) {
     }
