@@ -24,17 +24,7 @@ public class RubricaController extends Controller{
     private Button exportButton;
     private Button exitButton;
 
-    public RubricaController(Rubrica rubricaPointer, TableView rubricaList, Button removeButton, Button addButton, TextField researchField, Button importButton, Button exportButton, Button exitButton) {
-        this.rubricaPointer = rubricaPointer;
-        this.rubricaList = rubricaList;
-        this.removeButton = removeButton;
-        this.addButton = addButton;
-        this.researchField = researchField;
-        this.importButton = importButton;
-        this.exportButton = exportButton;
-        this.exitButton = exitButton;
-    }
-    
+   
     //metodi
     private void setRubricaList(Rubrica r){}
     

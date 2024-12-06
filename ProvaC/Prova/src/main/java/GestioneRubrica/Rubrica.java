@@ -16,17 +16,16 @@ import javafx.collections.ObservableList;
 public class Rubrica {
     private ObservableList<Contatto> contactList;
     
-    public Rubrica(){
-    }
+    public Rubrica(){}
     
     public boolean aggiungiContatto(Contatto c){
         //DA COMPLETARE
-        return false;
+       
     }
     
     public boolean rimuoviContatto(ObservableList<Contatto> list){
         //DA COMPLETARE
-        return false;
+       
     }
     
     public Rubrica ricercaContatti(String s){}

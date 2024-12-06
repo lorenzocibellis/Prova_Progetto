@@ -16,7 +16,7 @@ public class Contatto implements Comparable<Contatto> {
     private String[] numeri;
     private String[] emails;
 
-    public Contatto(){};
+    public Contatto(){}
 
     public void setNome(String nome) {
         this.nome = nome;

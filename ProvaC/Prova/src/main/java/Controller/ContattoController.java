@@ -33,22 +33,7 @@ public class ContattoController extends Controller{
     private Button removeButton;
     private Button exitButton;
 
-    public ContattoController(Contatto contactPointer, TextField nameField, TextField surnameField, TextField number1Field, TextField number2Field, TextField number3Field, TextField email1Field, TextField email2Field, TextField email3Field, Button modifyButton, Button confirmButton, Button removeButton, Button exitButton) {
-        this.contactPointer = contactPointer;
-        this.nameField = nameField;
-        this.surnameField = surnameField;
-        this.number1Field = number1Field;
-        this.number2Field = number2Field;
-        this.number3Field = number3Field;
-        this.email1Field = email1Field;
-        this.email2Field = email2Field;
-        this.email3Field = email3Field;
-        this.modifyButton = modifyButton;
-        this.confirmButton = confirmButton;
-        this.removeButton = removeButton;
-        this.exitButton = exitButton;
-    }
-    
+   // non è necessario un costruttore
     //metodi
     public void setController(){}
     
