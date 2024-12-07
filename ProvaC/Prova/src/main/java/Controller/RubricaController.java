@@ -14,6 +14,8 @@ import javafx.scene.control.TableView;
  * @brief Classe Controller per la gestione dell'interfaccia dell'applicazione "Rubrica".
  * Questa classe gestisce le interazioni con l'utente e le azioni sulla Rubrica.
  *
+ * @see GestioneRubrica.Rubrica
+ * @see Controller.Controller
  */
 public class RubricaController extends Controller {
 
