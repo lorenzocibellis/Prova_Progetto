@@ -127,7 +127,7 @@ public class ContattoController extends Controller implements Initializable {
      * 
      * @pre c non deve essere null.
      * 
-     * @post il controller conterrà le informazioni di c
+     * @post il controller conterrà le informazioni di c.
      */
     public void setController(Contatto c) {
         // Da implementare
