@@ -1,6 +1,6 @@
 /**
  * @file MainRubrica
- * @brief Classe principale per l'applicazione fatta in JavaFX.
+ * @brief Classe principale per l'applicazione in JavaFX.
  *
  *        Questa classe rappresenta l'ingresso dell'applicazione JavaFX e carica
  *        l'interfaccia utente da un file FXML.
