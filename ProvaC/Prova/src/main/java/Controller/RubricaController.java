@@ -65,11 +65,11 @@ public class RubricaController extends Controller implements Initializable {
     /**
     * @brief Inizializza il controller al caricamento della scena.
     * 
-    * Questo metodo viene chiamato automaticamente dal framework JavaFX 
-    * quando la scena associata a questo controller viene caricata.
+    *        Questo metodo viene chiamato automaticamente dal framework JavaFX 
+    *        quando la scena associata a questo controller viene caricata.
     * 
     * @param location La posizione del file FXML associato al controller (può essere null se non fornito).
-    * @param resources Le risorse internazionalizzate utilizzate per la scena (può essere null se non presenti).
+    * @param resources Le risorse utilizzate per la scena (può essere null se non presenti).
     * 
     * */
      @Override
