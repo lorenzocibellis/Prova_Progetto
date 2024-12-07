@@ -130,9 +130,10 @@ public class ContattoController extends Controller implements Initializable {
     }
 
     /**
-     * @brief ???
-     *          ???
-     *             ???
+     * @brief Disabilita l'interazione con i campi di testo
+     *
+     * Il metodo disabilita l'interazione con i campi di testo in modo che essi siano 
+     * accedibili dall'utente in modalità di sola lettura
      *        
      */
     public void disableModify() {
