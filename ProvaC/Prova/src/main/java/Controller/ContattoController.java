@@ -124,6 +124,8 @@ public class ContattoController extends Controller implements Initializable {
      * @brief Imposta il controller associando un contatto specifico.
      *
      * @param c il contatto da associare al controller.
+     * 
+     * @pre c non deve essere null.
      */
     public void setController(Contatto c) {
         // Da implementare
