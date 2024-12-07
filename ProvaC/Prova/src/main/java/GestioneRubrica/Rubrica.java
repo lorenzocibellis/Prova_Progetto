@@ -98,6 +98,11 @@ public class Rubrica {
      *        Si gestiscono anche i casi in cui il file scelto dall'utente non ha il formato adatto
      * 
      * @param nomefile Il nome del file da cui importare la rubrica
+     * 
+     * @pre nomefile deve essere una stringa non vuota
+     * 
+     * @post La rubrica contenuta nel file avente come nome nomefile viene caricata come rubrica nell'applicazione
+     * 
      * @throws da determinare le eccezioni / errori in cui si può incorrere
      */
     public void importaRubrica(String nomefile){
@@ -111,6 +116,11 @@ public class Rubrica {
      *        e si determina non solo la locazione del file ma anche la sua estensione
      * 
      * @param nomefile Il nome del file su cui esportare la rubrica
+     * 
+     * @pre nomefile deve essere una stringa non vuota
+     * 
+     * @post Viene creato sul computer un file contenente la rubrica 
+     * 
      * @throws da determinare le eccezioni/errori in cui si può incorrere
      */
     public void esportaRubrica(String nomefile){
