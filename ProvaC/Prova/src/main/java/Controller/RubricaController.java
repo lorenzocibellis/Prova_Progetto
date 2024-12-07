@@ -6,7 +6,10 @@ import java.awt.Button;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 /**
  * @file RubricaController.java
@@ -17,7 +20,7 @@ import javafx.scene.control.TableView;
  * @see GestioneRubrica.Rubrica
  * @see Controller.Controller
  */
-public class RubricaController extends Controller {
+public class RubricaController extends Controller implements Initializable {
 
     /**
      *  Puntatore all'istanza di Rubrica gestita.
@@ -59,6 +62,13 @@ public class RubricaController extends Controller {
      */
     private Button exitButton;
 
+    
+     @Override
+    public void initialize(URL location, ResourceBundle resources) {
+    
+    }
+    
+    
     /**
      * @brief Imposta la tabella con una nuova istanza di Rubrica.
      * 
@@ -121,4 +131,6 @@ public class RubricaController extends Controller {
     private void importRubrica(ActionEvent e) {
     
     }
+
+   
 }

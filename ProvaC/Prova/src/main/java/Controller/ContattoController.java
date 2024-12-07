@@ -6,7 +6,10 @@ import java.awt.Button;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 
 /**
  * @file ContattoController.java
@@ -21,7 +24,7 @@ import javafx.fxml.FXML;
  * @see Controller.Controller
  * 
  */
-public class ContattoController extends Controller {
+public class ContattoController extends Controller implements Initializable {
 
     // Attributi
     /**
@@ -89,6 +92,13 @@ public class ContattoController extends Controller {
      */
     private Button exitButton;
 
+    
+     @Override
+    public void initialize(URL location, ResourceBundle resources) {
+    
+    }
+    
+    
     /**
      * @brief Imposta il controller con i riferimenti e inizializza i componenti.
      *
