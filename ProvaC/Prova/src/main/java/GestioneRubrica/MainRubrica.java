@@ -1,3 +1,14 @@
+/**
+ * @file MainRubrica
+ * @brief Classe principale per l'applicazione fatta in JavaFX.
+ *
+ *        Questa classe rappresenta l'ingresso dell'applicazione JavaFX e carica
+ *        l'interfaccia utente da un file FXML.
+ */
+
+
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,13 +23,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- * @file MainRubrica
- * @brief Classe principale per l'applicazione fatta in JavaFX.
- *
- *        Questa classe rappresenta l'ingresso dell'applicazione JavaFX e carica
- *        l'interfaccia utente da un file FXML.
- */
+
 public class MainRubrica extends Application {
 
     /**

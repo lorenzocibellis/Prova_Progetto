@@ -1,3 +1,14 @@
+/**
+ * @file Rubrica.java
+ * 
+ * @brief Classe per la gestione di una rubrica di contatti.
+ *
+ *        Questa classe consente di gestire un insieme di contatti, permettendo operazioni
+ *        come aggiungere, rimuovere, cercare, importare ed esportare contatti da e verso file esterni.
+ */
+ 
+
+
 package GestioneRubrica;
 
 
@@ -9,15 +20,7 @@ import javafx.collections.ObservableList;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-/**
- * @file Rubrica.java
- * 
- * @brief Classe per la gestione di una rubrica di contatti.
- *
- *        Questa classe consente di gestire un insieme di contatti, permettendo operazioni
- *        come aggiungere, rimuovere, cercare, importare ed esportare contatti da e verso file esterni.
- */
- 
+
 public class Rubrica {
     
     /**

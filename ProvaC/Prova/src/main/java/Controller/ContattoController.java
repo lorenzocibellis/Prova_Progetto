@@ -1,16 +1,3 @@
-
-package Controller;
-
-import GestioneRubrica.Contatto;
-import java.awt.Button;
-import java.awt.TextField;
-import java.awt.event.ActionEvent;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-
 /**
  * @file ContattoController.java
  * 
@@ -24,6 +11,21 @@ import javafx.fxml.Initializable;
  * @see Controller.Controller
  * 
  */
+
+
+package Controller;
+
+import GestioneRubrica.Contatto;
+import java.awt.Button;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+
+
 public class ContattoController extends Controller implements Initializable {
 
     // Attributi

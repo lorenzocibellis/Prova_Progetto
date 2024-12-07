@@ -1,3 +1,14 @@
+/**
+ * @file RubricaController.java
+ * 
+ * @brief Classe Controller per la gestione dell'interfaccia dell'applicazione "Rubrica".
+ * Questa classe gestisce le interazioni con l'utente e le azioni sulla Rubrica.
+ *
+ * @see GestioneRubrica.Rubrica
+ * @see Controller.Controller
+ */
+
+
 
 package Controller;
 
@@ -11,15 +22,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
-/**
- * @file RubricaController.java
- * 
- * @brief Classe Controller per la gestione dell'interfaccia dell'applicazione "Rubrica".
- * Questa classe gestisce le interazioni con l'utente e le azioni sulla Rubrica.
- *
- * @see GestioneRubrica.Rubrica
- * @see Controller.Controller
- */
+
 public class RubricaController extends Controller implements Initializable {
 
     /**

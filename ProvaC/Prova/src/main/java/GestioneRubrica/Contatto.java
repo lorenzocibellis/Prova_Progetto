@@ -1,10 +1,3 @@
-package GestioneRubrica;
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 /**
  * @file Contatto.java
  * 
@@ -18,6 +11,16 @@ package GestioneRubrica;
  *        ma senza fornire direttamente un accesso ai singoli campi del contatto
  * 
  */
+
+
+package GestioneRubrica;
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+
 public class Contatto implements Comparable<Contatto> {
    
     /**
