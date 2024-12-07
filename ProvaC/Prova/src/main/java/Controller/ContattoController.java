@@ -9,16 +9,17 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 
 /**
- * Controller per la gestione delle operazioni sui contatti.
- *
- * Questa classe si occupa della gestione dell'interfaccia utente per interagire
- * con un oggetto {@code Contatto}. Permette di modificare, confermare, eliminare e
- * gestire le operazioni sui dati del contatto.
- * Estende la classe {@code Controller} da cui ne eredita i metodi {@code display} e {@code goBack} 
+ * @file ContattoController.java
+ * 
+ * @brief Controller per la gestione delle operazioni sui contatti.
+ *        Questa classe si occupa della gestione dell'interfaccia utente per interagire
+ *        con un oggetto {@code Contatto}. Permette di modificare, confermare, eliminare e
+ *        gestire le operazioni sui dati del contatto.
+ *        Estende la classe {@code Controller} da cui ne eredita i metodi {@code display} e {@code goBack} 
  * 
  * @see GestioneRubrica.Contatto
  * @see Controller.Controller
- * @author christian de cesare
+ * 
  */
 public class ContattoController extends Controller {
 
@@ -89,17 +90,17 @@ public class ContattoController extends Controller {
     private Button exitButton;
 
     /**
-     * Imposta il controller con i riferimenti e inizializza i componenti.
+     * @brief Imposta il controller con i riferimenti e inizializza i componenti.
      *
-     * Questo metodo permette di configurare il controller e i suoi componenti
-     * per il funzionamento corretto dell'interfaccia utente.
+     *        Questo metodo permette di configurare il controller e i suoi componenti
+     *        per il funzionamento corretto dell'interfaccia utente.
      */
     public void setController() {
         // Da implementare
     }
 
     /**
-     * Imposta il controller associando un contatto specifico.
+     * @brief Imposta il controller associando un contatto specifico.
      *
      * @param c il contatto da associare al controller.
      */
@@ -108,20 +109,20 @@ public class ContattoController extends Controller {
     }
 
     /**
-     * Disabilita la modalità di modifica dei campi.
-     *
-     * Questo metodo viene utilizzato per rendere i campi di input non modificabili,
-     * impedendo all'utente di cambiare i dati del contatto.
+     * @brief ???
+     *          ???
+     *             ???
+     *        
      */
     public void disableModify() {
         // Da implementare
     }
 
     /**
-     * Conferma le modifiche al contatto.
+     * @brief Conferma le modifiche al contatto.
      *
-     * Questo metodo viene invocato quando l'utente preme il bottone di conferma.
-     * Le modifiche ai dati del contatto vengono validate e salvate.
+     *        Questo metodo viene invocato quando l'utente preme il bottone di conferma.
+     *        Le modifiche ai dati del contatto vengono validate e salvate.
      *
      * @param c l'evento che ha generato l'azione di conferma.
      */
@@ -130,10 +131,10 @@ public class ContattoController extends Controller {
     }
 
     /**
-     * Abilita la modifica dei dati del contatto.
+     * @brief Abilita la modifica dei dati del contatto.
      *
-     * Questo metodo viene invocato quando l'utente preme il bottone di modifica.
-     * I campi di input diventano modificabili per permettere all'utente di cambiare i dati.
+     *        Questo metodo viene invocato quando l'utente preme il bottone di modifica.
+     *        I campi di input diventano modificabili per permettere all'utente di cambiare i dati.
      *
      * @param c l'evento che ha generato l'azione di modifica.
      */
@@ -142,10 +143,10 @@ public class ContattoController extends Controller {
     }
 
     /**
-     * Elimina il contatto corrente.
+     * @brief Elimina il contatto corrente.
      *
-     * Questo metodo viene invocato quando l'utente preme il bottone per eliminare.
-     * Il contatto viene rimosso dalla lista dei contatti gestita dall'applicazione.
+     *        Questo metodo viene invocato quando l'utente preme il bottone per eliminare uno o più contatti.
+     *        Il contatto o i contatti selezionati vengono rimossi dalla lista dei contatti gestita dall'applicazione.
      *
      * @param c l'evento che ha generato l'azione di eliminazione.
      */

@@ -6,15 +6,17 @@ package GestioneRubrica;
  */
 
 /**
- * Rappresenta un contatto all'interno di una rubrica.
- *
- * Questa classe contiene le informazioni necessarie come nome, cognome,
- * numeri di telefono e indirizzi email (gli ultimi due campi di informazioni possono avere un massimo di 3 elementi ognuno).
- * Consente di gestire e modificare i dati del contatto.
- * Implementa l'interfaccia {@code Comparable} per consentire il confronto e l'ordinamento.
- * Si sfruttano i metodi setter e getter per far modificare o prelevare un valore 
- * ma senza fornire direttamente un accesso ai singoli campi del contatto
- * @author christian de cesare
+ * @file Contatto.java
+ * 
+ * @brief Rappresenta un contatto all'interno di una rubrica.
+ *        
+ *        Questa classe contiene le informazioni necessarie come nome, cognome,
+ *        numeri di telefono e indirizzi email (gli ultimi due campi di informazioni possono avere un massimo di 3 elementi ognuno).
+ *        Consente di gestire e modificare i dati del contatto.
+ *        Implementa l'interfaccia {@code Comparable} per consentire il confronto e l'ordinamento.
+ *        Si sfruttano i metodi setter e getter per far modificare o prelevare un valore, 
+ *        ma senza fornire direttamente un accesso ai singoli campi del contatto
+ * 
  */
 public class Contatto implements Comparable<Contatto> {
    
@@ -38,92 +40,94 @@ public class Contatto implements Comparable<Contatto> {
      */
     private String[] emails;
 
+    
     /**
      * Costruttore predefinito della classe Contatto,
-     * il quale crea un contatto vuoto
+     * il quale assegna un valore predefinito agli attibuti 
+     * del contatto nel momento in cui viene creato l'oggetto.
+     * 
      */
+    
     public Contatto() {
-        // Inizializza gli array per evitare NullPointerException
-        //Ma si potrebbe anche inizializzare i singoli elementi ad un valore prefissato
+       
         numeri = new String[3];
         emails = new String[3];
     }
 
     /**
-     * Imposta il nome del contatto. 
+     * @brief Imposta il nome del contatto. 
      * 
-     *
-     * @param nome il nome del contatto.
+     * @param nome Il nome del contatto.
      */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
     /**
-     * Imposta il cognome del contatto.
+     * @brief Imposta il cognome del contatto.
      *
-     * @param cognome il cognome del contatto.
+     * @param cognome Il cognome del contatto.
      */
     public void setCognome(String cognome) {
         this.cognome = cognome;
     }
 
     /**
-     * Imposta il primo numero di telefono del contatto.
+     * @brief Imposta il primo numero di telefono del contatto.
      *
-     * @param numero il numero di telefono da impostare.
+     * @param numero Il numero di telefono da impostare.
      */
     public void setNumero1(String numero) {
         numeri[0] = numero;
     }
 
     /**
-     * Imposta il secondo numero di telefono del contatto.
+     * @brief Imposta il secondo numero di telefono del contatto.
      *
-     * @param numero il numero di telefono da impostare.
+     * @param numero Il numero di telefono da impostare.
      */
     public void setNumero2(String numero) {
         numeri[1] = numero;
     }
 
     /**
-     * Imposta il terzo numero di telefono del contatto.
+     * @brief Imposta il terzo numero di telefono del contatto.
      *
-     * @param numero il numero di telefono da impostare.
+     * @param numero Il numero di telefono da impostare.
      */
     public void setNumero3(String numero) {
         numeri[2] = numero;
     }
 
     /**
-     * Imposta il primo indirizzo email del contatto.
+     * @brief Imposta il primo indirizzo email del contatto.
      *
-     * @param email l'indirizzo email da impostare.
+     * @param email L'indirizzo email da impostare.
      */
     public void setEmail1(String email) {
         emails[0] = email;
     }
 
     /**
-     * Imposta il secondo indirizzo email del contatto.
+     * @brief Imposta il secondo indirizzo email del contatto.
      *
-     * @param email l'indirizzo email da impostare.
+     * @param email L'indirizzo email da impostare.
      */
     public void setEmail2(String email) {
         emails[1] = email;
     }
 
     /**
-     * Imposta il terzo indirizzo email del contatto.
+     * @brief Imposta il terzo indirizzo email del contatto.
      *
-     * @param email l'indirizzo email da impostare.
+     * @param email L'indirizzo email da impostare.
      */
     public void setEmail3(String email) {
         emails[2] = email;
     }
 
     /**
-     * Restituisce il nome del contatto.
+     * @brief Restituisce il nome del contatto.
      *
      * @return il nome del contatto come {@code String}.
      */
@@ -132,55 +136,58 @@ public class Contatto implements Comparable<Contatto> {
     }
 
     /**
-     * Restituisce il cognome del contatto.
+     * @brief Restituisce il cognome del contatto.
      *
-     * @return il cognome del contatto come {@code String}.
+     * @return Il cognome del contatto come {@code String}.
      */
     public String getCognome() {
         return cognome;
     }
 
     /**
-     * Restituisce l'array di numeri di telefono del contatto.
+     * @brief Restituisce l'array di numeri di telefono del contatto.
      *
-     * @return un array di stringhe contenente i numeri di telefono.
+     * @return Un array di stringhe contenente i numeri di telefono del contatto.
      */
     public String[] getNumeri() {
         return numeri;
     }
 
     /**
-     * Restituisce l'array di indirizzi email del contatto.
+     * @brief Restituisce l'array di indirizzi email del contatto.
      *
-     * @return un array di stringhe contenente gli indirizzi email.
+     * @return un array di stringhe contenente gli indirizzi email del contatto.
      */
     public String[] getEmails() {
         return emails;
     }
 
     /**
-     * Modifica i dettagli del contatto.
-     *
+     * @brief Modifica i dettagli del contatto.
+     * 
      * Questo metodo permette di aggiornare le informazioni esistenti di un contatto.
      */
     public void modificaContatto() {
         // Da implementare: definire come aggiornare i dettagli del contatto.
     }
 
+    
     /**
-     * Confronta questo contatto con un altro contatto basandosi sul nome e sul cognome.
+     * @brief Confronta questo contatto con un altro contatto basandosi sul cognome e sul nome.
      *
      * L'ordinamento viene effettuato in ordine alfabetico, considerando prima il cognome
      * e poi il nome.
      *
-     * @param o , l'oggetto di tipo {@code Contatto}, con cui confrontare
+     * @param c , l'oggetto di tipo {@code Contatto}, con cui confrontare
+     * 
      * @return un valore negativo, zero o positivo se questo contatto è rispettivamente
      *         minore, uguale o maggiore rispetto al contatto specificato.
-     * @throws da determinare quali eccezioni usare, un esempio
-     *  potrebbe essere NullPointerException se il contatto fornito è {@code null}.
+     * 
+     * @throws da determinare quali eccezioni usare, ad esempio
+     *         NullPointerException se il contatto fornito è {@code null}.
      */
     @Override
-    public int compareTo(Contatto o) {
+    public int compareTo(Contatto c) {
         
     }
 }

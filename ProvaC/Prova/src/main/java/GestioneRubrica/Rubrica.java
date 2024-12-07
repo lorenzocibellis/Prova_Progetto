@@ -10,16 +10,16 @@ import javafx.collections.ObservableList;
  */
 
 /**
+ * @file Rubrica.java
+ * 
+ * @brief Classe per la gestione di una rubrica di contatti.
  *
- * @author christian de cesare
- 
- * Classe per la gestione di una rubrica di contatti.
- *
- * Questa classe consente di gestire un insieme di contatti, permettendo operazioni
- * come aggiungere, rimuovere, cercare, importare ed esportare contatti da e verso file esterni.
+ *        Questa classe consente di gestire un insieme di contatti, permettendo operazioni
+ *        come aggiungere, rimuovere, cercare, importare ed esportare contatti da e verso file esterni.
  */
  
 public class Rubrica {
+    
     /**
      * Lista osservabile dei contatti al fine di poter sfruttare al meglio 
      * la libreria javafx
@@ -32,21 +32,23 @@ public class Rubrica {
      */
     public Rubrica(){}
     
+    
     /**
-    * Aggiunge un contatto alla lista dei contatti.
+    *  @brief Aggiunge un contatto alla lista dei contatti.
     *
-    * Questo metodo consente di aggiungere un oggetto di tipo {@code Contatto} 
-    * a una collezione o struttura dati (ad esempio, una lista). Se il contatto 
-    * è già presente o se ci sono condizioni particolari per l'aggiunta (come 
-    * valori null o duplicati), il metodo può gestirle restituendo un valore booleano.
+    *         Questo metodo consente di aggiungere un oggetto di tipo {@code Contatto} 
+    *         a una collezione o struttura dati (ad esempio, una lista). Se il contatto 
+    *         è già presente o se ci sono condizioni particolari per l'aggiunta (come 
+    *         valori null o duplicati), il metodo può gestirle restituendo un valore booleano.
     *
     * @param c il contatto da aggiungere, rappresentato come un oggetto {@code Contatto}.
     *          Non può essere {@code null}.
+    * 
     * @return {@code true} se il contatto è stato aggiunto con successo;
     *         {@code false} altrimenti (ad esempio, se il contatto è già presente 
     *         o se l'aggiunta non è consentita per altri motivi).
     * 
-    * @throws determinare quale eccezioni richiamare, un esempio potrebbe essere il NullPointerException nel momento in cui il valore è null
+    * @throws determinare quale eccezioni richiamare, ad esempio NullPointerException nel momento in cui il valore è null
     * 
     */
     public boolean aggiungiContatto(Contatto c){
@@ -54,12 +56,12 @@ public class Rubrica {
     }
     
     /**
-     * Rimuove un contatto da una lista osservabile di contatti.
+     *  @brief Rimuove un contatto da una lista osservabile di contatti.
      *
-     * Questo metodo consente di rimuovere un oggetto di tipo {@code Contatto} 
-     * da una lista osservabile ({@code ObservableList}). La rimozione può avvenire 
-     * in base a criteri definiti nell'implementazione del metodo (ad esempio, 
-     * corrispondenza con un contatto esistente nella lista).
+     *         Questo metodo consente di rimuovere un oggetto di tipo {@code Contatto} 
+     *         da una lista osservabile ({@code ObservableList}). La rimozione può avvenire 
+     *         in base a criteri definiti nell'implementazione del metodo (ad esempio, 
+     *         corrispondenza con un contatto esistente nella lista).
      *
      * @param list la lista osservabile ({@code ObservableList<Contatto>}) 
      *             da cui rimuovere il contatto. Non può essere {@code null}.
@@ -74,7 +76,7 @@ public class Rubrica {
     
     
     /**
-     * Ricerca nella lista osservabile i contatti avente corrispondenza con la stringa inserita dall'utente
+     * @brief Ricerca nella lista osservabile i contatti avente corrispondenza con la stringa inserita dall'utente
      * 
      * @param s la sottostringa inserita nel textfield corrispondente dall'utente
      * 
@@ -87,27 +89,28 @@ public class Rubrica {
     }
     
     /**
-     * Importa da file esterno una rubrica intera
+     * @brief Importa da file esterno una rubrica intera
      * 
-     * Viene richiamato questo metodo nel momento in cui l'utente preme il bottone corrispondente
-     * Si gestiscono anche i casi in cui il file scelto dall'utente non ha il formato adatto
+     *        Viene richiamato questo metodo nel momento in cui l'utente preme il bottone corrispondente
+     *        Si gestiscono anche i casi in cui il file scelto dall'utente non ha il formato adatto
      * 
+     * @param nomefile Il nome del file da cui importare la rubrica
      * @throws da determinare le eccezioni / errori in cui si può incorrere
      */
-    public void importaRubrica(){
+    public void importaRubrica(String nomefile){
     
     }
     
     /**
-     * Esporta la rubrica intera
+     * @brief Esporta la rubrica intera
      * 
-     * Si richiama questo metodo quando l'utente preme sul bottone corrispondente
+     *        Si richiama questo metodo quando l'utente preme sul bottone corrispondente
+     *        e si determina non solo la locazione del file ma anche la sua estensione
      * 
-     * e si determina non solo la locazione del file ma anche la sua estensione
-     * 
+     * @param nomefile Il nome del file su cui esportare la rubrica
      * @throws da determinare le eccezioni/errori in cui si può incorrere
      */
-    public void esportaRubrica(){
+    public void esportaRubrica(String nomefile){
     
     }
     
