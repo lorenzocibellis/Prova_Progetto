@@ -181,13 +181,6 @@ public class Contatto implements Comparable<Contatto> {
      */
     @Override
     public int compareTo(Contatto o) {
-        if (o == null) {
-            throw new NullPointerException("Il contatto da confrontare non può essere null.");
-        }
-        int cognomeComparison = this.cognome.compareToIgnoreCase(o.cognome);
-        if (cognomeComparison != 0) {
-            return cognomeComparison;
-        }
-        return this.nome.compareToIgnoreCase(o.nome);
+        
     }
 }
