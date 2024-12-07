@@ -1,7 +1,4 @@
-/**
- * @brief Classe Controller per la gestione dell'interfaccia dell'applicazione "Rubrica".
- * Questa classe gestisce le interazioni con l'utente e le azioni sulla Rubrica.
- */
+
 package Controller;
 
 import GestioneRubrica.Rubrica;
@@ -11,7 +8,13 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
-
+/**
+ * @file RubricaController.java
+ * 
+ * @brief Classe Controller per la gestione dell'interfaccia dell'applicazione "Rubrica".
+ * Questa classe gestisce le interazioni con l'utente e le azioni sulla Rubrica.
+ *
+ */
 public class RubricaController extends Controller {
 
     /**
@@ -50,7 +53,7 @@ public class RubricaController extends Controller {
     private Button exportButton;
 
     /**
-     * Pulsante per uscire dall'applicazione.
+     * @brief Pulsante per uscire dall'applicazione.
      */
     private Button exitButton;
 
