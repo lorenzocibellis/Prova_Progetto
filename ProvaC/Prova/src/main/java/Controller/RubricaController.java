@@ -41,6 +41,11 @@ public class RubricaController extends Controller implements Initializable {
     private Button removeButton;
 
     /**
+     * Pulsante per avviare la ricerca di contatti in rubrica
+     */
+    private Button researchButton;
+
+    /**
      * Pulsante per aggiungere un nuovo contatto alla Rubrica.
      */
     private Button addButton;
