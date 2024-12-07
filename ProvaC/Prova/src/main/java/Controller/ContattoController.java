@@ -92,7 +92,16 @@ public class ContattoController extends Controller implements Initializable {
      */
     private Button exitButton;
 
-    
+    /**
+    * @brief Inizializza il controller al caricamento della scena.
+    * 
+    * Questo metodo viene chiamato automaticamente dal framework JavaFX 
+    * quando la scena associata a questo controller viene caricata.
+    * 
+    * @param location La posizione del file FXML associato al controller (può essere null se non fornito).
+    * @param resources Le risorse internazionalizzate utilizzate per la scena (può essere null se non presenti).
+    * 
+    * */
      @Override
     public void initialize(URL location, ResourceBundle resources) {
     
