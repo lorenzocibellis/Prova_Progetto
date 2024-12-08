@@ -118,6 +118,10 @@ public class ContattoController extends Controller implements Initializable {
      *        per il funzionamento corretto dell'interfaccia utente.
      * 
      *  @param r il riferimento alla rubrica.
+     * 
+     * @pre r non deve essere null.
+     * 
+     * @post Il controller conterrà il riferimento alla rubrica dove lavorare.
      */
     public void setController(Rubrica r) {
         // Da implementare
@@ -128,9 +132,9 @@ public class ContattoController extends Controller implements Initializable {
      *
      * @param c il contatto da associare al controller.
      * 
-     * @param r il riferimento alla rubrica
+     * @param r il riferimento alla rubrica a cui il contatto appartiene.
      * 
-     * @pre c non deve essere null.
+     * @pre c ed r non devono essere null.
      * 
      * @post il controller conterrà le informazioni di c.
      */
@@ -165,7 +169,8 @@ public class ContattoController extends Controller implements Initializable {
      * @brief Abilita la modifica dei dati del contatto.
      *
      *        Questo metodo viene invocato quando l'utente preme il bottone di modifica.
-     *        I campi di input diventano modificabili per permettere all'utente di cambiare i dati.
+     *        I campi di input diventano modificabili per permettere all'utente di,eventualmente,
+     *        modificare i dati.
      *
      * @param c l'evento che ha generato l'azione di modifica.
      */
