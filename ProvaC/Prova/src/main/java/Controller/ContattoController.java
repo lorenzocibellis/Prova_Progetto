@@ -2,14 +2,15 @@
  * @file ContattoController.java
  * 
  * @brief Controller per la gestione delle operazioni sui contatti.
- *        Questa classe si occupa della gestione dell'interfaccia utente per interagire
- *        con un oggetto {@code Contatto}. Permette di modificare, confermare, eliminare e
+ *
+ *    Questa classe si occupa della gestione dell'interfaccia utente per interagire
+ *        con un oggetto {@link Contatto.java}. Permette di  modificare, confermare, eliminare e
  *        gestire le operazioni sui dati del contatto.
- *        Estende la classe {@code Controller} da cui ne eredita i metodi {@code display} e {@code goBack} 
+ *        Estende la classe {@link Controller.java} da cui ne eredita i metodi {@code display} e {@code goBack }.
  * 
- * @see GestioneRubrica.Contatto
- * @see Controller.Controller
  * @see GestioneRubrica.Rubrica
+ * @see Controller.Controller
+ * @see GestioneRubrica.Contatto
  */
 
 
@@ -121,7 +122,7 @@ public class ContattoController extends Controller implements Initializable {
      * 
      * @pre r non deve essere null.
      * 
-     * @post Il controller conterrà il riferimento alla rubrica dove lavorare.
+     * @post Il controller conterrà il riferimento alla rubrica su cui lavorare.
      */
     public void setController(Rubrica r) {
         // Da implementare

@@ -3,7 +3,7 @@
  * 
  * @brief Classe per la gestione di una rubrica di contatti.
  *
- *        Questa classe consente di gestire un insieme di contatti, permettendo operazioni
+ * Questa classe consente di gestire un insieme di contatti, permettendo operazioni
  *        come aggiungere, rimuovere, cercare, importare ed esportare contatti da e verso file esterni.
  */
  
@@ -38,7 +38,7 @@ public class Rubrica {
     /**
     *  @brief Aggiunge un contatto alla lista dei contatti.
     *
-    *         Questo metodo consente di aggiungere un oggetto di tipo {@code Contatto} 
+    *Questo metodo consente di aggiungere un oggetto di tipo {@code Contatto} 
     *         a una collezione o struttura dati (ad esempio, una lista). Se il contatto 
     *         è già presente o se ci sono condizioni particolari per l'aggiunta (come 
     *         valori null o duplicati), il metodo può gestirle restituendo un valore booleano.
@@ -60,7 +60,7 @@ public class Rubrica {
     /**
      *  @brief Rimuove un contatto da una lista osservabile di contatti.
      *
-     *         Questo metodo consente di rimuovere un oggetto di tipo {@code Contatto} 
+     *Questo metodo consente di rimuovere un oggetto di tipo {@code Contatto} 
      *         da una lista osservabile ({@code ObservableList}). La rimozione può avvenire 
      *         in base a criteri definiti nell'implementazione del metodo (ad esempio, 
      *         corrispondenza con un contatto esistente nella lista).
@@ -93,7 +93,7 @@ public class Rubrica {
     /**
      * @brief Importa da file esterno una rubrica intera
      * 
-     *        Viene richiamato questo metodo nel momento in cui l'utente preme il bottone corrispondente
+     *Viene richiamato questo metodo nel momento in cui l'utente preme il bottone corrispondente
      *        Si gestiscono anche i casi in cui il file scelto dall'utente non ha il formato adatto
      * 
      * @param nomefile Il nome del file da cui importare la rubrica
@@ -111,7 +111,7 @@ public class Rubrica {
     /**
      * @brief Esporta la rubrica intera
      * 
-     *        Si richiama questo metodo quando l'utente preme sul bottone corrispondente
+     * Si richiama questo metodo quando l'utente preme sul bottone corrispondente
      *        e si determina non solo la locazione del file ma anche la sua estensione
      * 
      * @param nomefile Il nome del file su cui esportare la rubrica

@@ -2,7 +2,7 @@
  * @file MainRubrica
  * @brief Classe principale per l'applicazione in JavaFX.
  *
- *        Questa classe rappresenta l'ingresso dell'applicazione JavaFX e carica
+ *Questa classe rappresenta l'ingresso dell'applicazione JavaFX e carica
  *        l'interfaccia utente da un file FXML.
  */
 
@@ -29,7 +29,7 @@ public class MainRubrica extends Application {
     /**
      * @brief Metodo principale di avvio dell'applicazione JavaFX.
      *
-     *        Questo metodo viene invocato automaticamente dal framework JavaFX 
+     *Questo metodo viene invocato automaticamente dal framework JavaFX 
      *        e si occupa di configurare e mostrare la finestra principale dell'applicazione.
      * 
      * @param stage La finestra principale dell'applicazione (Stage).
@@ -50,7 +50,7 @@ public class MainRubrica extends Application {
     /**
      * @brief Metodo main per avviare l'applicazione.
      *
-     *        Questo metodo invoca il metodo `launch` di JavaFX per iniziare l'esecuzione
+     *Questo metodo invoca il metodo `launch` di JavaFX per iniziare l'esecuzione
      *        dell'applicazione.
      * 
      * @param args Gli argomenti della riga di comando passati all'applicazione.

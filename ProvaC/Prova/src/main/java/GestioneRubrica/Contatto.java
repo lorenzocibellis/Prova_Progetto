@@ -3,7 +3,7 @@
  * 
  * @brief Rappresenta un contatto all'interno di una rubrica.
  *        
- *        Questa classe contiene le informazioni necessarie come nome, cognome,
+ *Questa classe contiene le informazioni necessarie come nome, cognome,
  *        numeri di telefono e indirizzi email (gli ultimi due campi di informazioni possono avere un massimo di 3 elementi ognuno).
  *        Consente di gestire e modificare i dati del contatto.
  *        Implementa l'interfaccia {@code Comparable} per consentire il confronto e l'ordinamento.
@@ -181,7 +181,7 @@ public class Contatto implements Comparable<Contatto> {
      * L'ordinamento viene effettuato in ordine alfabetico, considerando prima il cognome
      * e poi il nome.
      *
-     * @param c , l'oggetto di tipo {@code Contatto}, con cui confrontare
+     * @param c l'oggetto di tipo {@link Contatto.java}, con cui confrontare
      * 
      * @return un valore negativo, zero o positivo se questo contatto è rispettivamente
      *         minore, uguale o maggiore rispetto al contatto specificato.

@@ -3,7 +3,7 @@
  * 
  * @brief Classe astratta base per i controller dell'applicazione.
  *
- *        Fornisce funzionalità comuni per la gestione e la navigazione
+ *Fornisce funzionalità comuni per la gestione e la navigazione
  *        tra le schermate. Le sottoclassi possono determinare in maniera autonoma 
  *        i diversi metodi in base all'evenienza
  * 
@@ -34,7 +34,7 @@ public abstract class Controller {
     /**
      * @brief Mostra una nuova vista sulla scena corrente.
      *        
-     *        Questo metodo consente di visualizzare un nodo {@code Parent} specifico
+     *Questo metodo consente di visualizzare un nodo {@code Parent} specifico
      *        come nuova interfaccia utente. Può essere usato per navigare tra diverse
      *        schermate dell'applicazione.
      *
@@ -50,7 +50,7 @@ public abstract class Controller {
     /**
      * @brief Torna alla schermata precedente.
      *         
-     *        Questo metodo consente di ripristinare la schermata visualizzata prima
+     *Questo metodo consente di ripristinare la schermata visualizzata prima
      *        della navigazione corrente. La logica di gestione della cronologia delle
      *        viste deve essere definita nell'implementazione.
      *
