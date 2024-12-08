@@ -38,19 +38,22 @@ public class Rubrica {
     /**
     *  @brief Aggiunge un contatto alla lista dei contatti.
     *
-    *Questo metodo consente di aggiungere un oggetto di tipo {@code Contatto} 
-    *         a una collezione o struttura dati (ad esempio, una lista). Se il contatto 
+    *Questo metodo consente di aggiungere un oggetto di tipo {@link Contatto.java} a una 
+    *         collezione o struttura dati (ad esempio, una lista). Se il contatto 
     *         è già presente o se ci sono condizioni particolari per l'aggiunta (come 
     *         valori null o duplicati), il metodo può gestirle restituendo un valore booleano.
     *
-    * @param c il contatto da aggiungere, rappresentato come un oggetto {@code Contatto}.
-    *          Non può essere {@code null}.
+    * @param c il contatto da aggiungere, rappresentato come un oggetto {@link Contatto.java}.
     * 
     * @return {@code true} se il contatto è stato aggiunto con successo;
     *         {@code false} altrimenti (ad esempio, se il contatto è già presente 
     *         o se l'aggiunta non è consentita per altri motivi).
     * 
-    * @throws determinare quale eccezioni richiamare, ad esempio NullPointerException nel momento in cui il valore è null
+    * @pre c non può essere null.
+    * 
+    * @post Il contatto è aggiunto alla rubrica.
+    * 
+    * 
     * 
     */
     public boolean aggiungiContatto(Contatto c){
@@ -60,17 +63,21 @@ public class Rubrica {
     /**
      *  @brief Rimuove un contatto da una lista osservabile di contatti.
      *
-     *Questo metodo consente di rimuovere un oggetto di tipo {@code Contatto} 
+     *Questo metodo consente di rimuovere un oggetto di tipo {@link Contatto.java} 
      *         da una lista osservabile ({@code ObservableList}). La rimozione può avvenire 
      *         in base a criteri definiti nell'implementazione del metodo (ad esempio, 
      *         corrispondenza con un contatto esistente nella lista).
      *
      * @param list la lista osservabile ({@code ObservableList<Contatto>}) 
-     *             da cui rimuovere il contatto. Non può essere {@code null}.
+     *             da cui rimuovere il contatto.
      * @return {@code true} se il contatto è stato rimosso correttamente;
      *         {@code false} se il contatto non è presente in {@code list} o per altri motivi
      *
-     * @throws Da determinare le eccezioni da richiamare per questo metodo
+     * @pre list non deve essere null.
+     * @pre I contatti di list devono appartenere alla rubrica da cui li si vuole rimuovere
+     * 
+     * @post I contatti appartenente a list sono rimossi dalla rubrica
+     * 
      */
     public boolean rimuoviContatto(ObservableList<Contatto> list){  
     }
@@ -80,11 +87,11 @@ public class Rubrica {
     /**
      * @brief Ricerca nella lista osservabile i contatti avente corrispondenza con la stringa inserita dall'utente
      * 
-     * @param s la sottostringa inserita nel textfield corrispondente dall'utente
+     * @param s la stringa inserita nel textfield corrispondente dall'utente
      * 
-     * @return la sotto-rubrica cui fanno parte i contatti avente corrispondenza alla sottostringa {@code s}
+     * @return la sotto-rubrica cui fanno parte i contatti avente corrispondenza alla stringa {@code s}
      * 
-     * @throws da determinare le eccezioni corrispondenti al metodo
+     * 
      */
     public Rubrica ricercaContatti(String s){
     
@@ -102,7 +109,7 @@ public class Rubrica {
      * 
      * @post La rubrica contenuta nel file avente come nome nomefile viene caricata come rubrica nell'applicazione
      * 
-     * @throws da determinare le eccezioni / errori in cui si può incorrere
+     * 
      */
     public void importaRubrica(String nomefile){
     
@@ -120,7 +127,7 @@ public class Rubrica {
      * 
      * @post Viene creato sul computer un file contenente la rubrica 
      * 
-     * @throws da determinare le eccezioni/errori in cui si può incorrere
+     * 
      */
     public void esportaRubrica(String nomefile){
     
