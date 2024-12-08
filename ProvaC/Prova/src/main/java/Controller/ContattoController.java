@@ -9,13 +9,14 @@
  * 
  * @see GestioneRubrica.Contatto
  * @see Controller.Controller
- * 
+ * @see GestioneRubrica.Rubrica
  */
 
 
 package Controller;
 
 import GestioneRubrica.Contatto;
+import GestioneRubrica.Rubrica;
 import java.awt.Button;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
@@ -115,8 +116,10 @@ public class ContattoController extends Controller implements Initializable {
      *
      *        Questo metodo permette di configurare il controller e i suoi componenti
      *        per il funzionamento corretto dell'interfaccia utente.
+     * 
+     *  @param r il riferimento alla rubrica.
      */
-    public void setController() {
+    public void setController(Rubrica r) {
         // Da implementare
     }
 
@@ -125,11 +128,13 @@ public class ContattoController extends Controller implements Initializable {
      *
      * @param c il contatto da associare al controller.
      * 
+     * @param r il riferimento alla rubrica
+     * 
      * @pre c non deve essere null.
      * 
      * @post il controller conterrà le informazioni di c.
      */
-    public void setController(Contatto c) {
+    public void setController(Contatto c, Rubrica r) {
         // Da implementare
     }
 

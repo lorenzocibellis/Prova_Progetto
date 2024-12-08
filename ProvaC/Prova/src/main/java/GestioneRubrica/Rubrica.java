@@ -12,7 +12,6 @@
 package GestioneRubrica;
 
 
-import GestioneRubrica.Contatto;
 import javafx.collections.ObservableList;
 
 /*
