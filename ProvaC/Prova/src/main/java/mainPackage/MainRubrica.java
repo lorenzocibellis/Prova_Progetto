@@ -34,6 +34,7 @@ public class MainRubrica extends Application {
      *        e si occupa di configurare e mostrare la finestra principale dell'applicazione.
      * 
      * @param stage La finestra principale dell'applicazione (Stage).
+     * 
      * @throws Exception Se si verifica un errore durante il caricamento del file FXML.
      */
     @Override
