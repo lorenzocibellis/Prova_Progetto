@@ -15,8 +15,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mainPackage;
+package com.mycompany.prova;
 
+import mainPackage.*;
 import java.io.IOException;
 import javafx.application.Application;
 import static javafx.application.Application.launch;

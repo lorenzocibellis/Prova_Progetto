@@ -12,6 +12,7 @@
 package GestioneRubrica;
 
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /*
@@ -32,7 +33,11 @@ public class Rubrica {
      * Costruttore della classe Rubrica, che sarà inizialmente vuota
      * 
      */
-    public Rubrica(){}
+    public Rubrica(){
+    
+        this.contactList = FXCollections.observableArrayList();
+        
+    }
     
     
     /**
@@ -57,7 +62,12 @@ public class Rubrica {
     * 
     */
     public boolean aggiungiContatto(Contatto c){
-      //Da completare 
+      
+        
+        return this.contactList.add(c);
+        
+        
+        
     }
     
     /**
@@ -80,6 +90,10 @@ public class Rubrica {
      * 
      */
     public boolean rimuoviContatto(ObservableList<Contatto> list){  
+    
+    
+        return contactList.removeAll(list);
+   
     }
     
     
@@ -94,7 +108,7 @@ public class Rubrica {
      * 
      */
     public Rubrica ricercaContatti(String s){
-    
+        return null;
     }
     
     /**
@@ -132,5 +146,21 @@ public class Rubrica {
     public void esportaRubrica(String nomefile){
     
     }
+
+    public ObservableList<Contatto> getContactList() {
+        return contactList;
+    }
+
+    
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }

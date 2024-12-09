@@ -34,66 +34,79 @@ public class ContattoController extends Controller implements Initializable {
     /**
      * Riferimento al contatto gestito dal controller.
      */
+    @FXML
     private Contatto contactPointer;
 
     /**
      * Campo di testo per il nome del contatto.
      */
+    @FXML
     private TextField nameField;
 
     /**
      * Campo di testo per il cognome del contatto.
      */
+    @FXML
     private TextField surnameField;
 
     /**
      * Campo di testo per il primo numero di telefono del contatto.
      */
+    @FXML
     private TextField number1Field;
 
     /**
      * Campo di testo per il secondo numero di telefono del contatto.
      */
+    @FXML
     private TextField number2Field;
 
     /**
      * Campo di testo per il terzo numero di telefono del contatto.
      */
+    @FXML
     private TextField number3Field;
 
     /**
      * Campo di testo per il primo indirizzo email del contatto.
      */
+    @FXML
     private TextField email1Field;
 
     /**
      * Campo di testo per il secondo indirizzo email del contatto.
      */
+    @FXML
     private TextField email2Field;
 
     /**
      * Campo di testo per il terzo indirizzo email del contatto.
      */
+    @FXML
     private TextField email3Field;
 
     /**
      * Bottone per abilitare la modifica del contatto.
      */
+    @FXML
     private Button modifyButton;
 
     /**
      * Bottone per confermare le modifiche al contatto.
      */
+    @FXML
     private Button confirmButton;
 
     /**
      * Bottone per eliminare il contatto.
      */
+    @FXML
     private Button removeButton;
 
     /**
      * Bottone per uscire dalla vista corrente.
      */
+    @FXML
     private Button exitButton;
 
     /**
@@ -124,6 +137,7 @@ public class ContattoController extends Controller implements Initializable {
      * 
      * @post Il controller conterrà il riferimento alla rubrica su cui lavorare.
      */
+    @FXML
     public void setController(Rubrica r) {
         // Da implementare
     }
@@ -139,6 +153,7 @@ public class ContattoController extends Controller implements Initializable {
      * 
      * @post il controller conterrà le informazioni di c.
      */
+    @FXML
     public void setController(Contatto c, Rubrica r) {
         // Da implementare
     }
@@ -150,6 +165,7 @@ public class ContattoController extends Controller implements Initializable {
      * accedibili dall'utente in modalità di sola lettura
      *        
      */
+    @FXML
     public void disableModify() {
         // Da implementare
     }
@@ -162,6 +178,7 @@ public class ContattoController extends Controller implements Initializable {
      *
      * @param c l'evento che ha generato l'azione di conferma.
      */
+    @FXML
     private void confirm(ActionEvent c) {
         // Da implementare
     }
@@ -175,6 +192,7 @@ public class ContattoController extends Controller implements Initializable {
      *
      * @param c l'evento che ha generato l'azione di modifica.
      */
+    @FXML
     private void modify(ActionEvent c) {
         // Da implementare
     }
@@ -187,6 +205,7 @@ public class ContattoController extends Controller implements Initializable {
      *
      * @param c l'evento che ha generato l'azione di eliminazione.
      */
+    @FXML
     private void delete(ActionEvent c) {
         // Da implementare
     }

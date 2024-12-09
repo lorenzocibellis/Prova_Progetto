@@ -43,6 +43,7 @@ public abstract class Controller {
      * 
      * @throws Da determinare se il metodo può generare eccezioni, come {@code NullPointerException}.
      */
+    @FXML
     private void display(Parent p) {
         // Da implementare
     }
@@ -56,6 +57,7 @@ public abstract class Controller {
      *
      * @throws Da determinare se il metodo può generare eccezioni, come {@code IOException}.
      */
+    @FXML
     private void goBack() {
         // Da implementare
     }

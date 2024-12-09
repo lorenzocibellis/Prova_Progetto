@@ -191,6 +191,6 @@ public class Contatto implements Comparable<Contatto> {
      */
     @Override
     public int compareTo(Contatto c) {
-        
+        return 0;
     }
 }
