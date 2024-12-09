@@ -15,6 +15,7 @@ package Controller;
 
 import GestioneRubrica.Contatto;
 import GestioneRubrica.Rubrica;
+import com.mycompany.prova.App;
 import java.awt.Button;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
@@ -48,6 +49,11 @@ public class RubricaController implements Initializable {
    
     
     private Rubrica rubricaPointer;
+    
+    @FXML
+    private javafx.scene.control.Button Open;
+    @FXML
+    private javafx.scene.control.Button addButton;
             
             
     
@@ -64,7 +70,7 @@ public class RubricaController implements Initializable {
 
         
         rubricaList.setItems(rubricaPointer.getContactList());   // collega i dati della rubrica alla tableview
-      //  rubricaList.getSelectionModel().setSelectionMode(javafx.scene.control.SelectionMode.MULTIPLE);
+        rubricaList.getSelectionModel().setSelectionMode(javafx.scene.control.SelectionMode.MULTIPLE);
         
         
         
@@ -72,127 +78,114 @@ public class RubricaController implements Initializable {
         
     }
     
-//    
-//    /**
-//     * @brief Imposta la tabella con una nuova istanza di Rubrica.
-//     * 
-//     * @param r la nuova Rubrica da visualizzare nella tabella
-//     * 
-//     * @pre r deve essere diverso da null.
-//     * 
-//     * @post il controller conterrà il puntatore alla rubrica r.
-//    
-//    @FXML
-//    private void setRubricaList(Rubrica r) {
-//    
-//        this.rubricaPointer = r;
-//        
-//    }
-//
-//    /**
-//     * @brief Aggiunge un nuovo contatto alla Rubrica.
-//     * 
-//     * @param e evento che attiva l'aggiunta del contatto
-//     */
-//    @FXML
-//    private void add(ActionEvent e) throws IOException {
-//        
-//        Parent root = FXMLLoader.load(getClass().getResource("secondary.fxml"));
-//        Scene s = new Scene(root);
-//        Stage pp = new Stage();
-//        
-//        pp.setScene(s);
-//        pp.initModality(Modality.APPLICATION_MODAL);
-//        pp.show();
-//        
-//        
-//    }
-//
-//    
-//    
-//    
-//    
-//    
-//    
-//    /**
-//     * @brief Effettua una ricerca di contatti nella Rubrica.
-//     * 
-//     * @param e evento che attiva la ricerca
-//     */
-//    @FXML
-//    private void research(ActionEvent e) {
-//        
-//        if(!researchField.getText().isEmpty())
-//            rubricaList.setItems(rubricaPointer.ricercaContatti(researchField.getText()).getContactList());
-//        else
-//            rubricaList.setItems(rubricaPointer.getContactList());
-//        
-//    }
-//
-//    /**
-//     * @brief Elimina un contatto selezionato dalla Rubrica.
-//     * 
-//     * @param e evento che attiva l'eliminazione
-//     */
-//    @FXML
-//    private void delete(ActionEvent e) {
-//    
-//        rubricaPointer.rimuoviContatto(rubricaList.getSelectionModel().getSelectedItems());
-//        
-//    }
-//
-//    /**
-//     * @brief Apre i dettagli di un contatto selezionato.
-//     * 
-//     * @param e evento che attiva l'apertura del contatto
-//     */
-//    @FXML
-//    private void openContact(ActionEvent e) throws IOException {
-//    
-//        Contatto temp = (Contatto) rubricaList.getSelectionModel().getSelectedItem();
-//                
-//        if(temp == null)
-//            return;
-//        
-//        
-//        FXMLLoader base = new FXMLLoader(getClass().getResource("secondary.fxml"));
-//        Parent root = base.load();
-//        
-//        ContattoController ctr = base.getController();
-//        
-//        
-//        ctr.setController(temp, rubricaPointer);
-//        
-//        Scene scene = new Scene(root);
-//        Stage avviso = new Stage();
-//        
-//        avviso.setScene(scene);
-//        avviso.initModality(Modality.APPLICATION_MODAL); // non permette l'interazione con altre finestre se non il pop-up
-//        
-//        
-//        avviso.show();
-//        
-//    }
-//
-//    /**
-//     * @brief Esporta i contatti della Rubrica in un file.
-//     * 
-//     * @param e evento che attiva l'esportazione
-//     */
-//    @FXML
-//    private void exportRubrica(ActionEvent e) {
-//    
-//    }
-//
-//    /**
-//     * @brief Importa contatti nella Rubrica da un file.
-//     * 
-//     * @param e evento che attiva l'importazione
-//     */
-//    @FXML
-//    private void importRubrica(ActionEvent e) {
-//    
-//    }
+    
+    /**
+     * @brief Imposta la tabella con una nuova istanza di Rubrica.
+     * 
+     * @param r la nuova Rubrica da visualizzare nella tabella
+     * 
+     * @pre r deve essere diverso da null.
+     * 
+     * @post il controller conterrà il puntatore alla rubrica r.
+    
+    @FXML
+    private void setRubricaList(Rubrica r) {
+    
+        this.rubricaPointer = r;
+        
+    }
+
+    /**
+     * @brief Aggiunge un nuovo contatto alla Rubrica.
+     * 
+     * @param e evento che attiva l'aggiunta del contatto
+     */
+    @FXML
+    private void add(javafx.event.ActionEvent event) throws IOException {
+        
+        
+        FXMLLoader f = App.getFXML("Contatto");
+        Parent root = f.load();
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+        
+        
+    }
+
+    
+    
+    
+    
+    
+    
+    /**
+     * @brief Effettua una ricerca di contatti nella Rubrica.
+     * 
+     * @param e evento che attiva la ricerca
+     */
+    private void research(ActionEvent e) {
+        
+        /*if(!researchField.getText().isEmpty())
+            rubricaList.setItems(rubricaPointer.ricercaContatti(researchField.getText()).getContactList());
+        else
+            rubricaList.setItems(rubricaPointer.getContactList());*/
+        
+    }
+
+    /**
+     * @brief Elimina un contatto selezionato dalla Rubrica.
+     * 
+     * @param e evento che attiva l'eliminazione
+     */
+    private void delete(ActionEvent e) {
+    
+        rubricaPointer.rimuoviContatto(rubricaList.getSelectionModel().getSelectedItems());
+        
+    }
+
+    /**
+     * @brief Apre i dettagli di un contatto selezionato.
+     * 
+     * @param e evento che attiva l'apertura del contatto
+     */
+    @FXML
+    private void openContact(javafx.event.ActionEvent event) throws IOException {
+    
+        Contatto temp = (Contatto) rubricaList.getSelectionModel().getSelectedItem();
+                
+        if(temp == null)
+            return;
+        
+        
+        FXMLLoader base = new FXMLLoader(getClass().getResource("Contatto.fxml"));
+        Parent root = base.load();
+        
+        ContattoController ctr = base.getController();
+        
+        
+        ctr.setController(temp, rubricaPointer);
+        
+        Scene scene = new Scene(root);
+        Stage avviso = new Stage();
+        
+        avviso.setScene(scene);
+        avviso.initModality(Modality.APPLICATION_MODAL); // non permette l'interazione con altre finestre se non il pop-up
+        
+        
+        avviso.show();
+        
+    }
+
+    /**
+     * @brief Esporta i contatti della Rubrica in un file.
+     * 
+     * @param e evento che attiva l'esportazione
+     */
+
+
 
    
 }
