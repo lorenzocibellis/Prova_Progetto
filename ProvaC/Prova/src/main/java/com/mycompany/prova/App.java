@@ -15,7 +15,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mainPackage;
+package com.mycompany.prova;
 
 import java.io.IOException;
 import javafx.application.Application;
@@ -26,7 +26,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-public class MainRubrica extends Application {
+public class App extends Application {
 
         private static Scene scene;
         
@@ -43,7 +43,7 @@ public class MainRubrica extends Application {
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainRubrica.class.getResource(fxml + ".fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
