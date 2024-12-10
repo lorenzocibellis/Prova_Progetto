@@ -332,7 +332,7 @@ public class ContattoController extends Controller implements Initializable {
         flag &= numberControl(number3Field.getText());
         flag &= mailControl(email1Field.getText());
         flag &= mailControl(email2Field.getText());
-        flag &= mailControl(email3Field.getText());
+        flag = mailControl(email3Field.getText());
         if(!flag){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Errore");
