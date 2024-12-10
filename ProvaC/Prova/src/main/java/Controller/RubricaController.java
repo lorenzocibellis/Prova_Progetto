@@ -102,7 +102,6 @@ public class RubricaController extends Controller implements Initializable {
             if(event.getClickCount() == 2) //controlla il numero di click
                 try {
                     
-                    
                     openContact(null); //apre lo studente
             
                 
@@ -151,7 +150,7 @@ public class RubricaController extends Controller implements Initializable {
             return;
         
         
-        FXMLLoader base = new FXMLLoader(getClass().getResource("Contatto.fxml"));
+        FXMLLoader base = App.getFXML("Contatto");
         Parent root = base.load();
         
         ContattoController ctr = base.getController();
@@ -160,13 +159,13 @@ public class RubricaController extends Controller implements Initializable {
         ctr.setController(temp, rubricaPointer);
         
         Scene scene = new Scene(root);
-        Stage avviso = new Stage();
+        Stage info = new Stage();
         
-        avviso.setScene(scene);
-        avviso.initModality(Modality.APPLICATION_MODAL); // non permette l'interazione con altre finestre se non il pop-up
+        info.setScene(scene);
+        info.initModality(Modality.APPLICATION_MODAL); // non permette l'interazione con altre finestre se non il pop-up
         
         
-        avviso.show();
+        info.show();
         
     }
 
