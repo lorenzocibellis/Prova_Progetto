@@ -6,39 +6,62 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="296.0" prefWidth="429.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ContattoController">
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ContattoController">
    <children>
-      <SplitPane dividerPositions="0.29797979797979796" layoutX="65.0" layoutY="53.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+      <VBox spacing="20">
                <children>
-                  <Button fx:id="modifyButton" layoutX="36.0" layoutY="21.0" mnemonicParsing="false" onAction="#modify" text="Modifica" />
-                  <Button fx:id="removeButton" layoutX="39.0" layoutY="186.0" mnemonicParsing="false" onAction="#delete" text="Elimina" />
-                  <Button fx:id="exitButton" layoutX="38.0" layoutY="243.0" mnemonicParsing="false" onAction="#goBack" text="Annulla" />
-                  <Button fx:id="confirmButton" layoutX="32.0" layoutY="120.0" mnemonicParsing="false" onAction="#confirm" text="Conferma" />
+                  <ToolBar prefHeight="40.0" prefWidth="200.0">
+                     <items>
+                        <Button fx:id="exitButton" mnemonicParsing="false" onAction="#goBack" text="X" />
+                     </items>
+                  </ToolBar>
+                  <HBox prefHeight="100.0" prefWidth="300.0">
+                     <children>
+                          <Region HBox.hgrow="ALWAYS">
+                              <prefWidth>28.6</prefWidth>
+                          </Region>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="142.8" spacing="10" HBox.hgrow="ALWAYS">
+                           <children>
+                              
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <TextField fx:id="nameField" prefHeight="27.0" prefWidth="95.0" promptText="Nome" />
+                                    <TextField fx:id="surnameField" prefHeight="27.0" prefWidth="95.0" promptText="Cognome" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label text="Numeri" />
+                                    <TextField fx:id="number1Field" prefHeight="27.0" prefWidth="95.0" />
+                                    <TextField fx:id="number2Field" prefHeight="27.0" prefWidth="95.0" />
+                                    <TextField fx:id="number3Field" prefHeight="27.0" prefWidth="95.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label text="E-mail" />
+                                    <TextField fx:id="email1Field" prefHeight="27.0" prefWidth="95.0" />
+                                    <TextField fx:id="email2Field" prefHeight="27.0" prefWidth="95.0" />
+                                    <TextField fx:id="email3Field" prefHeight="27.0" prefWidth="95.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        <Region HBox.hgrow="ALWAYS">
+                      <prefWidth>28.6</prefWidth>
+                  </Region>
+                     </children>
+                  </HBox>
+                  <VBox alignment="TOP_CENTER" spacing="3">
+                     <children>
+                        <Button fx:id="removeButton" mnemonicParsing="false" onAction="#delete" prefHeight="30.0" prefWidth="100.0" text="Rimuovi" />
+                        <Button fx:id="modifyButton" mnemonicParsing="false" onAction="#modify" prefHeight="30.0" prefWidth="100.0" text="Modifica" />
+                        <Button fx:id="confirmButton" mnemonicParsing="false" onAction="#confirm" prefHeight="30.0" prefWidth="100.0" text="Conferma" />
+                        <Region prefHeight="30.0" />
+                     </children>
+                  </VBox>
                </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-               <children>
-                  <TextField fx:id="surnameField" layoutX="14.0" layoutY="42.0" prefHeight="27.0" prefWidth="95.0" />
-                  <TextField fx:id="nameField" layoutX="153.0" layoutY="42.0" prefHeight="27.0" prefWidth="95.0" />
-                  <TextField fx:id="number1Field" layoutX="24.0" layoutY="134.0" prefHeight="27.0" prefWidth="95.0" />
-                  <TextField fx:id="number2Field" layoutX="24.0" layoutY="185.0" prefHeight="27.0" prefWidth="95.0" />
-                  <TextField fx:id="number3Field" layoutX="24.0" layoutY="244.0" prefHeight="27.0" prefWidth="95.0" />
-                  <TextField fx:id="email3Field" layoutX="154.0" layoutY="244.0" prefHeight="27.0" prefWidth="95.0" />
-                  <TextField fx:id="email2Field" layoutX="154.0" layoutY="185.0" prefHeight="27.0" prefWidth="95.0" />
-                  <TextField fx:id="email1Field" layoutX="154.0" layoutY="134.0" prefHeight="27.0" prefWidth="95.0" />
-                  <Label layoutX="14.0" layoutY="25.0" text="Cognome" />
-                  <Label layoutX="154.0" layoutY="25.0" text="Nome" />
-                  <Label layoutX="29.0" layoutY="227.0" text="Numero 3" />
-                  <Label layoutX="29.0" layoutY="168.0" text="Numero 2" />
-                  <Label layoutX="29.0" layoutY="117.0" text="Numero 1" />
-                  <Label layoutX="160.0" layoutY="227.0" text="Email 3" />
-                  <Label layoutX="160.0" layoutY="168.0" text="Email 2" />
-                  <Label layoutX="160.0" layoutY="117.0" text="Email 1" />
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
+            </VBox>
    </children>
 </AnchorPane>

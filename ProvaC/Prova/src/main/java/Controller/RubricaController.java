@@ -42,6 +42,7 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -74,15 +75,15 @@ public class RubricaController extends Controller implements Initializable {
     @FXML
     private javafx.scene.control.Button exitButton;
             
-     @FXML
-    private SplitPane splitPane;  
     
-    
+    ContattoController contattoController;
+    @FXML
+    private AnchorPane contattoPane;
     
      @Override
     public void initialize(URL location, ResourceBundle resources) {
     
-        
+        contattoPane.setVisible(false);
         this.rubricaPointer = new Rubrica();
         
          
@@ -142,7 +143,6 @@ public class RubricaController extends Controller implements Initializable {
     }
 
     
-    @FXML
     private void openContact(javafx.event.ActionEvent event) throws IOException {
     
         Contatto temp = (Contatto) rubricaList.getSelectionModel().getSelectedItem();
@@ -150,24 +150,18 @@ public class RubricaController extends Controller implements Initializable {
         if(temp == null)
             return;
         
-        
-        FXMLLoader base = App.getFXML("Contatto");
-        Parent root = base.load();
-        
-        ContattoController ctr = base.getController();
-        
-        
-        ctr.setController(temp, rubricaPointer);
-        
-        Scene scene = new Scene(root);
-        Stage info = new Stage();
-        
-        info.setScene(scene);
-        info.initModality(Modality.APPLICATION_MODAL); // non permette l'interazione con altre finestre se non il pop-up
-        
-        
-        info.showAndWait();
-        rubricaList.refresh();
+        contattoPane.setVisible(true);
+        FXMLLoader loader = App.getFXML("Contatto");
+    AnchorPane contactPane = loader.load();
+
+    ContattoController controller = loader.getController();
+        controller.setController(temp, rubricaPointer);
+    
+
+    contattoPane.getChildren().clear();
+    contattoPane.getChildren().add(contactPane);
+
+   
         
     }
 
