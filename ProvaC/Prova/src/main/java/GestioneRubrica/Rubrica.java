@@ -108,7 +108,12 @@ public class Rubrica {
      * 
      */
     public Rubrica ricercaContatti(String s){
-        return null;
+        Rubrica temp = new Rubrica();
+        for(Contatto c : contactList){
+            if(c.getNome().contains(s) || c.getCognome().contains(s))
+                temp.aggiungiContatto(c);
+        }
+        return temp;
     }
     
     /**

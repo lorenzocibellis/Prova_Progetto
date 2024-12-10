@@ -189,10 +189,10 @@ public class RubricaController extends Controller implements Initializable {
     @FXML
     private void research(javafx.event.ActionEvent event) {
     
-    /*if(!researchField.getText().isEmpty())
+    if(!researchField.getText().isEmpty())
             rubricaList.setItems(rubricaPointer.ricercaContatti(researchField.getText()).getContactList());
         else
-            rubricaList.setItems(rubricaPointer.getContactList());*/
+            rubricaList.setItems(rubricaPointer.getContactList());
     
     
     
@@ -206,7 +206,10 @@ public class RubricaController extends Controller implements Initializable {
       super.goBack(stage);
     
     }
-
+    
+    public void refresh(){
+        rubricaList.refresh();
+    }
     /**
      * @brief Esporta i contatti della Rubrica in un file.
      * 

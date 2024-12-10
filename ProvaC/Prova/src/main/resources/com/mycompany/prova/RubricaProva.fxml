@@ -6,8 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.RubricaController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RubricaController">
    <children>
       <SplitPane dividerPositions="0.29797979797979796" layoutX="1.0" layoutY="-2.0" prefHeight="276.0" prefWidth="483.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0">
         <items>
@@ -26,8 +25,8 @@
                <children>
                   <TableView fx:id="rubricaList" layoutX="118.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn fx:id="cognomeClm" prefWidth="193.0" text="C1" />
-                      <TableColumn fx:id="nomeClm" prefWidth="222.0" text="C2" />
+                      <TableColumn fx:id="cognomeClm" prefWidth="193.0" text="Cognome" />
+                      <TableColumn fx:id="nomeClm" prefWidth="222.0" text="Nome" />
                     </columns>
                   </TableView>
                </children>
