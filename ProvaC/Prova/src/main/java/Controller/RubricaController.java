@@ -36,7 +36,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class RubricaController implements Initializable {
+public class RubricaController extends Controller implements Initializable {
 
     @FXML
     private TableView<Contatto> rubricaList;
@@ -51,9 +51,19 @@ public class RubricaController implements Initializable {
     private Rubrica rubricaPointer;
     
     @FXML
-    private javafx.scene.control.Button Open;
-    @FXML
     private javafx.scene.control.Button addButton;
+    @FXML
+    private javafx.scene.control.Button removeButton;
+    @FXML
+    private javafx.scene.control.Button importButton;
+    @FXML
+    private javafx.scene.control.Button exportButton;
+    @FXML
+    private javafx.scene.control.Button researchButton;
+    @FXML
+    private javafx.scene.control.TextField researchField;
+    @FXML
+    private javafx.scene.control.Button exitButton;
             
             
     
@@ -79,27 +89,6 @@ public class RubricaController implements Initializable {
     }
     
     
-    /**
-     * @brief Imposta la tabella con una nuova istanza di Rubrica.
-     * 
-     * @param r la nuova Rubrica da visualizzare nella tabella
-     * 
-     * @pre r deve essere diverso da null.
-     * 
-     * @post il controller conterrà il puntatore alla rubrica r.
-    
-    @FXML
-    private void setRubricaList(Rubrica r) {
-    
-        this.rubricaPointer = r;
-        
-    }
-
-    /**
-     * @brief Aggiunge un nuovo contatto alla Rubrica.
-     * 
-     * @param e evento che attiva l'aggiunta del contatto
-     */
     @FXML
     private void add(javafx.event.ActionEvent event) throws IOException {
         
@@ -116,41 +105,6 @@ public class RubricaController implements Initializable {
     }
 
     
-    
-    
-    
-    
-    
-    /**
-     * @brief Effettua una ricerca di contatti nella Rubrica.
-     * 
-     * @param e evento che attiva la ricerca
-     */
-    private void research(ActionEvent e) {
-        
-        /*if(!researchField.getText().isEmpty())
-            rubricaList.setItems(rubricaPointer.ricercaContatti(researchField.getText()).getContactList());
-        else
-            rubricaList.setItems(rubricaPointer.getContactList());*/
-        
-    }
-
-    /**
-     * @brief Elimina un contatto selezionato dalla Rubrica.
-     * 
-     * @param e evento che attiva l'eliminazione
-     */
-    private void delete(ActionEvent e) {
-    
-        rubricaPointer.rimuoviContatto(rubricaList.getSelectionModel().getSelectedItems());
-        
-    }
-
-    /**
-     * @brief Apre i dettagli di un contatto selezionato.
-     * 
-     * @param e evento che attiva l'apertura del contatto
-     */
     @FXML
     private void openContact(javafx.event.ActionEvent event) throws IOException {
     
@@ -177,6 +131,39 @@ public class RubricaController implements Initializable {
         
         avviso.show();
         
+    }
+
+    @FXML
+    private void delete(javafx.event.ActionEvent event) {
+    
+            rubricaPointer.rimuoviContatto(rubricaList.getSelectionModel().getSelectedItems());
+
+    
+    
+    }
+
+    @FXML
+    private void importRubrica(javafx.event.ActionEvent event) {
+    }
+
+    @FXML
+    private void exportRubrica(javafx.event.ActionEvent event) {
+    }
+
+    @FXML
+    private void research(javafx.event.ActionEvent event) {
+    
+    /*if(!researchField.getText().isEmpty())
+            rubricaList.setItems(rubricaPointer.ricercaContatti(researchField.getText()).getContactList());
+        else
+            rubricaList.setItems(rubricaPointer.getContactList());*/
+    
+    
+    
+    }
+
+    @FXML
+    private void goBack(javafx.event.ActionEvent event) {
     }
 
     /**

@@ -53,8 +53,24 @@ public class Contatto implements Comparable<Contatto> {
     
     public Contatto() {
        
+        
+        this.nome = null;
+        this.cognome = null;
         numeri = new String[3];
         emails = new String[3];
+    
+        numeri[0] = null;
+        numeri[1] = null;
+        numeri[2] = null;
+    
+    
+        emails[0] = null;
+        emails[1] = null;
+        emails[2] = null;
+    
+    
+    
+    
     }
 
     /**
@@ -172,6 +188,14 @@ public class Contatto implements Comparable<Contatto> {
      */
     public void modificaContatto() {
         // Da implementare: definire come aggiornare i dettagli del contatto.
+    
+    
+    
+    
+    
+    
+    
+    
     }
 
     
@@ -191,6 +215,11 @@ public class Contatto implements Comparable<Contatto> {
      */
     @Override
     public int compareTo(Contatto c) {
-        return 0;
+      
+    
+    
     }
+
+
+
 }

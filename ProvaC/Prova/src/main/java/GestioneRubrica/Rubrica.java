@@ -147,6 +147,12 @@ public class Rubrica {
     
     }
 
+    
+    
+    
+    
+    
+    
     public ObservableList<Contatto> getContactList() {
         return contactList;
     }

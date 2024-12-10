@@ -30,84 +30,78 @@ import javafx.fxml.Initializable;
 
 public class ContattoController extends Controller implements Initializable {
 
-    // Attributi
-    /**
-     * Riferimento al contatto gestito dal controller.
-     */
-    @FXML
-    private Contatto contactPointer;
 
     /**
      * Campo di testo per il nome del contatto.
      */
     @FXML
-    private TextField nameField;
+    private javafx.scene.control.TextField nameField;
 
     /**
      * Campo di testo per il cognome del contatto.
      */
     @FXML
-    private TextField surnameField;
+    private javafx.scene.control.TextField surnameField;
 
     /**
      * Campo di testo per il primo numero di telefono del contatto.
      */
     @FXML
-    private TextField number1Field;
+    private javafx.scene.control.TextField number1Field;
 
     /**
      * Campo di testo per il secondo numero di telefono del contatto.
      */
     @FXML
-    private TextField number2Field;
+    private javafx.scene.control.TextField number2Field;
 
     /**
      * Campo di testo per il terzo numero di telefono del contatto.
      */
     @FXML
-    private TextField number3Field;
+    private javafx.scene.control.TextField number3Field;
 
     /**
      * Campo di testo per il primo indirizzo email del contatto.
      */
     @FXML
-    private TextField email1Field;
+    private javafx.scene.control.TextField email1Field;
 
     /**
      * Campo di testo per il secondo indirizzo email del contatto.
      */
     @FXML
-    private TextField email2Field;
+    private javafx.scene.control.TextField email2Field;
 
     /**
      * Campo di testo per il terzo indirizzo email del contatto.
      */
     @FXML
-    private TextField email3Field;
+    private javafx.scene.control.TextField email3Field;
 
     /**
      * Bottone per abilitare la modifica del contatto.
      */
     @FXML
-    private Button modifyButton;
+    private javafx.scene.control.Button modifyButton;
 
     /**
      * Bottone per confermare le modifiche al contatto.
      */
     @FXML
-    private Button confirmButton;
+    private javafx.scene.control.Button confirmButton;
 
     /**
      * Bottone per eliminare il contatto.
      */
     @FXML
-    private Button removeButton;
+    private javafx.scene.control.Button removeButton;
 
     /**
      * Bottone per uscire dalla vista corrente.
      */
     @FXML
-    private Button exitButton;
+    private javafx.scene.control.Button exitButton;
 
     /**
     * @brief Inizializza il controller al caricamento della scena.
@@ -179,7 +173,7 @@ public class ContattoController extends Controller implements Initializable {
      * @param c l'evento che ha generato l'azione di conferma.
      */
     @FXML
-    private void confirm(ActionEvent c) {
+    private void modify(javafx.event.ActionEvent event) {
         // Da implementare
     }
 
@@ -193,7 +187,7 @@ public class ContattoController extends Controller implements Initializable {
      * @param c l'evento che ha generato l'azione di modifica.
      */
     @FXML
-    private void modify(ActionEvent c) {
+    private void delete(javafx.event.ActionEvent event) {
         // Da implementare
     }
 
@@ -206,7 +200,11 @@ public class ContattoController extends Controller implements Initializable {
      * @param c l'evento che ha generato l'azione di eliminazione.
      */
     @FXML
-    private void delete(ActionEvent c) {
+    private void goBack(javafx.event.ActionEvent event) {
         // Da implementare
+    }
+
+    @FXML
+    private void confirm(javafx.event.ActionEvent event) {
     }
 }
