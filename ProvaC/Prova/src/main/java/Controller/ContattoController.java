@@ -28,6 +28,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javax.swing.JOptionPane;
 
 
 public class ContattoController extends Controller implements Initializable {
@@ -151,14 +153,14 @@ public class ContattoController extends Controller implements Initializable {
    
         this.rubricaPointer = r;
         
-    nameField.setText(null); 
-    surnameField.setText(null);
-    number1Field.setText(null);
-    number2Field.setText(null);
-    number3Field.setText(null);
-    email1Field.setText(null);
-    email2Field.setText(null);
-    email3Field.setText(null);
+    nameField.setText(""); 
+    surnameField.setText("");
+    number1Field.setText("");
+    number2Field.setText("");
+    number3Field.setText("");
+    email1Field.setText("");
+    email2Field.setText("");
+    email3Field.setText("");
     
     
     
@@ -330,16 +332,76 @@ public class ContattoController extends Controller implements Initializable {
     @FXML
     private void confirm(javafx.event.ActionEvent event) {
     
-    
+    boolean flag = true;
     
      String nome = nameField.getText();
+     
+    
+     if(!Character.isLetter(nome.charAt(0))){
+         
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Errore");
+        alert.setHeaderText(null); // Se non vuoi nessun header, puoi impostarlo a null
+        alert.setContentText("Il nome non può iniziare con un numero!");
+
+        flag = false;
+      
+        nameField.clear();
+        
+        alert.showAndWait();
+         
+        
+     }
+     
+     
+     
     String cognome = surnameField.getText();
+    
+     if(!Character.isLetter(cognome.charAt(0))){
+         
+      Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Errore");
+        alert.setHeaderText(null); // Se non vuoi nessun header, puoi impostarlo a null
+        alert.setContentText("Il cognome non può iniziare con un numero!");
+
+        flag = false;
+      
+         nameField.setText("");
+        
+        alert.showAndWait();
+         
+        
+     }
+    
+    if(nome.equals("") && cognome.equals("")){
+        
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Errore");
+        alert.setHeaderText(null); // Se non vuoi nessun header, puoi impostarlo a null
+        alert.setContentText("E' necessario inserire almeno un nome o un cognome!");
+
+        flag = false;
+      
+        nameField.setText("");
+        alert.showAndWait();
+        
+        
+        
+    }
+     
+     
+     
+    
     String numero1 = number1Field.getText();
     String numero2 = number2Field.getText();
     String numero3 = number3Field.getText();
     String email1 = email1Field.getText();
     String email2 = email2Field.getText();
     String email3 = email3Field.getText();
+    
+    
+    if(flag){
+    
     
     Contatto c = new Contatto();
     
@@ -360,7 +422,7 @@ public class ContattoController extends Controller implements Initializable {
         
       super.goBack(stage);
     
-    
+    }
     
     
     }
