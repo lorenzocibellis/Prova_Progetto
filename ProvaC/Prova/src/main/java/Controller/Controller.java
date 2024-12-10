@@ -18,8 +18,10 @@
 package Controller;
 
 import java.io.IOException;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
+import javafx.stage.Stage;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -58,7 +60,14 @@ public abstract class Controller {
      * @throws Da determinare se il metodo può generare eccezioni, come {@code IOException}.
      */
     @FXML
-    private void goBack() {
+    protected void goBack(Stage stage) {
         // Da implementare
+    
+    if (stage != null) {
+        stage.close();
+    }
+    
+    
+    
     }
 }

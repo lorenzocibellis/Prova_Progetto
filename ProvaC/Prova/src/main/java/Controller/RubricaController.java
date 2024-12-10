@@ -22,17 +22,26 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -65,7 +74,10 @@ public class RubricaController extends Controller implements Initializable {
     @FXML
     private javafx.scene.control.Button exitButton;
             
-            
+     @FXML
+    private SplitPane splitPane;  
+    
+    
     
      @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -84,6 +96,25 @@ public class RubricaController extends Controller implements Initializable {
         
         
         
+       
+        
+        EventHandler<MouseEvent> doubleClickHandler = event ->{ //Evento di apertura studente con doppio click
+            if(event.getClickCount() == 2) //controlla il numero di click
+                try {
+                    
+                    
+                    openContact(null); //apre lo studente
+            
+                
+                
+                } catch (IOException ex) {
+                Logger.getLogger(ContattoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        };
+        
+        rubricaList.setOnMouseClicked(doubleClickHandler);
+        
+        
         
         
     }
@@ -92,7 +123,6 @@ public class RubricaController extends Controller implements Initializable {
     @FXML
     private void add(javafx.event.ActionEvent event) throws IOException {
         
-        
         FXMLLoader f = App.getFXML("Contatto");
         Parent root = f.load();
         Stage stage = new Stage();
@@ -100,6 +130,13 @@ public class RubricaController extends Controller implements Initializable {
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
+        
+        ContattoController controller = f.getController(); 
+    if (controller != null) {
+        controller.setController(this.rubricaPointer); 
+    } else {
+        System.out.println("Il controller è nullo");
+    }
         
         
     }
@@ -164,6 +201,11 @@ public class RubricaController extends Controller implements Initializable {
 
     @FXML
     private void goBack(javafx.event.ActionEvent event) {
+    
+     javafx.stage.Stage stage = (javafx.stage.Stage) exitButton.getScene().getWindow();
+        
+      super.goBack(stage);
+    
     }
 
     /**

@@ -24,6 +24,8 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -103,6 +105,12 @@ public class ContattoController extends Controller implements Initializable {
     @FXML
     private javafx.scene.control.Button exitButton;
 
+    private Rubrica rubricaPointer;
+    
+    private Contatto contattoSelezionato;
+    
+    
+    
     /**
     * @brief Inizializza il controller al caricamento della scena.
     * 
@@ -115,6 +123,11 @@ public class ContattoController extends Controller implements Initializable {
     * */
      @Override
     public void initialize(URL location, ResourceBundle resources) {
+    
+   
+    
+    
+    
     
     }
     
@@ -134,6 +147,23 @@ public class ContattoController extends Controller implements Initializable {
     @FXML
     public void setController(Rubrica r) {
         // Da implementare
+    
+   
+        this.rubricaPointer = r;
+        
+    nameField.setText(null); 
+    surnameField.setText(null);
+    number1Field.setText(null);
+    number2Field.setText(null);
+    number3Field.setText(null);
+    email1Field.setText(null);
+    email2Field.setText(null);
+    email3Field.setText(null);
+    
+    
+    
+    
+    
     }
 
     /**
@@ -149,7 +179,46 @@ public class ContattoController extends Controller implements Initializable {
      */
     @FXML
     public void setController(Contatto c, Rubrica r) {
-        // Da implementare
+         
+        rubricaPointer=r;
+        
+         
+         if (c == null) {
+            throw new IllegalArgumentException("Il contatto non può essere null.");
+        }
+        // Memorizza il contatto passato al controller
+        this.contattoSelezionato = c;
+
+        // Popola i campi della GUI con i dati del contatto
+        nameField.setText(c.getNome());
+        surnameField.setText(c.getCognome());
+
+        // Gestisci l'array di numeri
+        String[] numeri = c.getNumeri();
+        if (numeri != null && numeri.length > 0) {
+            number1Field.setText(numeri.length > 0 ? numeri[0] : null);
+            number2Field.setText(numeri.length > 1 ? numeri[1] : null);
+            number3Field.setText(numeri.length > 2 ? numeri[2] : null);
+        } else {
+            // Se non ci sono numeri, lascia i campi vuoti
+            number1Field.clear();
+            number2Field.clear();
+            number3Field.clear();
+        }
+
+        // Gestisci l'array di email
+        String[] emails = c.getEmails();
+        if (emails != null && emails.length > 0) {
+            email1Field.setText(emails.length > 0 ? emails[0] : null);
+            email2Field.setText(emails.length > 1 ? emails[1] : null);
+            email3Field.setText(emails.length > 2 ? emails[2] : null);
+        } else {
+            // Se non ci sono email, lascia i campi vuoti
+            email1Field.clear();
+            email2Field.clear();
+            email3Field.clear();
+
+    }
     }
 
     /**
@@ -161,7 +230,16 @@ public class ContattoController extends Controller implements Initializable {
      */
     @FXML
     public void disableModify() {
-        // Da implementare
+       
+        this.nameField.setEditable(false);
+        this.surnameField.setEditable(false);
+        this.number1Field.setEditable(false);
+        this.number2Field.setEditable(false);
+        this.number3Field.setEditable(false);
+        this.email1Field.setEditable(false);
+        this.email2Field.setEditable(false);
+        this.email3Field.setEditable(false);
+
     }
 
     /**
@@ -174,7 +252,42 @@ public class ContattoController extends Controller implements Initializable {
      */
     @FXML
     private void modify(javafx.event.ActionEvent event) {
-        // Da implementare
+           // Controlla se il contatto è stato selezionato
+        
+           if (contattoSelezionato == null) {
+            System.out.println("Nessun contatto selezionato.");
+            return;
+        }    
+
+
+        //Salvo i numeri e le mail salvate nei rispettivi array 
+        String[] numeri = {number1Field.getText(),number2Field.getText(),number3Field.getText()};
+
+        String[] emails = {email1Field.getText(),email2Field.getText(),email3Field.getText()};
+
+        // Rimuovi elementi vuoti da numeri ed email
+        //numeri = java.util.Arrays.stream(numeri).filter(n -> !n.isEmpty()).toArray(String[]::new);
+        //emails = java.util.Arrays.stream(emails).filter(e -> !e.isEmpty()).toArray(String[]::new);
+
+        // Modifico i campi del contatto selezionato, richiamando i metodi impiegati per i campi della GUI
+        contattoSelezionato.setNome(nameField.getText());
+        contattoSelezionato.setCognome(surnameField.getText());
+        contattoSelezionato.setEmail1(email1Field.getText());
+        contattoSelezionato.setEmail2(email2Field.getText());
+        contattoSelezionato.setEmail3(email3Field.getText());
+        contattoSelezionato.setNumero1(number1Field.getText());
+        contattoSelezionato.setNumero2(number2Field.getText());
+        contattoSelezionato.setNumero3(number3Field.getText());
+
+        // Opzionale: salva il contatto nella rubrica, se necessario
+        // rubrica.salvaContatto(contattoSelezionato);
+
+        // Notifica che le modifiche sono state salvate
+        System.out.println("Modifiche salvate per: " + contattoSelezionato.getNome() + " " + contattoSelezionato.getCognome());
+
+        // Disabilita i campi di modifica dopo aver salvato le modifiche
+        disableModify();   
+
     }
 
     /**
@@ -188,7 +301,12 @@ public class ContattoController extends Controller implements Initializable {
      */
     @FXML
     private void delete(javafx.event.ActionEvent event) {
-        // Da implementare
+       
+        ObservableList<Contatto> list;
+        list = FXCollections.observableArrayList();
+        list.add(contattoSelezionato);
+        rubricaPointer.rimuoviContatto(list);
+
     }
 
     /**
@@ -202,9 +320,48 @@ public class ContattoController extends Controller implements Initializable {
     @FXML
     private void goBack(javafx.event.ActionEvent event) {
         // Da implementare
+    
+      javafx.stage.Stage stage = (javafx.stage.Stage) exitButton.getScene().getWindow();
+        
+      super.goBack(stage);
+    
     }
 
     @FXML
     private void confirm(javafx.event.ActionEvent event) {
+    
+    
+    
+     String nome = nameField.getText();
+    String cognome = surnameField.getText();
+    String numero1 = number1Field.getText();
+    String numero2 = number2Field.getText();
+    String numero3 = number3Field.getText();
+    String email1 = email1Field.getText();
+    String email2 = email2Field.getText();
+    String email3 = email3Field.getText();
+    
+    Contatto c = new Contatto();
+    
+    
+    c.setNome(nome);
+    c.setCognome(cognome);
+    c.setEmail1(email1);
+    c.setEmail2(email2);
+    c.setEmail3(email3);
+    c.setNumero1(numero1);
+    c.setNumero2(numero2);
+    c.setNumero3(numero3);
+    
+    this.rubricaPointer.aggiungiContatto(c);
+    
+    
+        javafx.stage.Stage stage = (javafx.stage.Stage) exitButton.getScene().getWindow();
+        
+      super.goBack(stage);
+    
+    
+    
+    
     }
 }
