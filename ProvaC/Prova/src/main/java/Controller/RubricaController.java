@@ -128,7 +128,7 @@ public class RubricaController extends Controller implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.show();
+        
         
         ContattoController controller = f.getController(); 
     if (controller != null) {
@@ -136,7 +136,8 @@ public class RubricaController extends Controller implements Initializable {
     } else {
         System.out.println("Il controller è nullo");
     }
-        
+       
+    stage.show();
         
     }
 
@@ -165,7 +166,8 @@ public class RubricaController extends Controller implements Initializable {
         info.initModality(Modality.APPLICATION_MODAL); // non permette l'interazione con altre finestre se non il pop-up
         
         
-        info.show();
+        info.showAndWait();
+        rubricaList.refresh();
         
     }
 
@@ -207,9 +209,6 @@ public class RubricaController extends Controller implements Initializable {
     
     }
     
-    public void refresh(){
-        rubricaList.refresh();
-    }
     /**
      * @brief Esporta i contatti della Rubrica in un file.
      * 

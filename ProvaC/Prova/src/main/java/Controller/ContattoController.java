@@ -24,6 +24,7 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -111,6 +112,8 @@ public class ContattoController extends Controller implements Initializable {
     
     private Contatto contattoSelezionato;
     
+    private boolean typeController;
+    
     
     
     /**
@@ -127,7 +130,15 @@ public class ContattoController extends Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
     
    
-    
+    nameField.setText("");
+    surnameField.setText("");
+    number1Field.setText("");
+    number2Field.setText("");
+    number3Field.setText("");
+    email1Field.setText("");
+    email2Field.setText("");
+    email3Field.setText("");
+    contattoSelezionato = null;
     
     
     
@@ -151,19 +162,8 @@ public class ContattoController extends Controller implements Initializable {
         // Da implementare
     
    
-        this.rubricaPointer = r;
-        
-    nameField.setText(""); 
-    surnameField.setText("");
-    number1Field.setText("");
-    number2Field.setText("");
-    number3Field.setText("");
-    email1Field.setText("");
-    email2Field.setText("");
-    email3Field.setText("");
-    
-    
-    
+    this.rubricaPointer = r;
+    typeController = false;
     
     
     }
@@ -183,11 +183,8 @@ public class ContattoController extends Controller implements Initializable {
     public void setController(Contatto c, Rubrica r) {
          
         rubricaPointer=r;
+        typeController = true;
         
-         
-         if (c == null) {
-            throw new IllegalArgumentException("Il contatto non può essere null.");
-        }
         // Memorizza il contatto passato al controller
         this.contattoSelezionato = c;
 
@@ -197,30 +194,16 @@ public class ContattoController extends Controller implements Initializable {
 
         // Gestisci l'array di numeri
         String[] numeri = c.getNumeri();
-        if (numeri != null && numeri.length > 0) {
-            number1Field.setText(numeri.length > 0 ? numeri[0] : null);
-            number2Field.setText(numeri.length > 1 ? numeri[1] : null);
-            number3Field.setText(numeri.length > 2 ? numeri[2] : null);
-        } else {
-            // Se non ci sono numeri, lascia i campi vuoti
-            number1Field.clear();
-            number2Field.clear();
-            number3Field.clear();
-        }
+        number1Field.setText(numeri[0]);
+        number2Field.setText(numeri[1]);
+        number3Field.setText(numeri[2]);
 
         // Gestisci l'array di email
         String[] emails = c.getEmails();
-        if (emails != null && emails.length > 0) {
-            email1Field.setText(emails.length > 0 ? emails[0] : null);
-            email2Field.setText(emails.length > 1 ? emails[1] : null);
-            email3Field.setText(emails.length > 2 ? emails[2] : null);
-        } else {
-            // Se non ci sono email, lascia i campi vuoti
-            email1Field.clear();
-            email2Field.clear();
-            email3Field.clear();
-
-    }
+        email1Field.setText(emails[0]);
+        email2Field.setText(emails[1]);
+        email3Field.setText(emails[2]);
+        
     }
 
     /**
@@ -331,99 +314,104 @@ public class ContattoController extends Controller implements Initializable {
 
     @FXML
     private void confirm(javafx.event.ActionEvent event) {
-    
-    boolean flag = true;
-    
-     String nome = nameField.getText();
-     
-    
-     if(!Character.isLetter(nome.charAt(0))){
-         
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Errore");
-        alert.setHeaderText(null); // Se non vuoi nessun header, puoi impostarlo a null
-        alert.setContentText("Il nome non può iniziare con un numero!");
+    boolean flag;
+    if(typeController == false){
+        
+        flag = nominativeControl(nameField.getText(), surnameField.getText());
+        
+        if(!flag){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Errore");
+            alert.setHeaderText(null); // Se non vuoi nessun header, puoi impostarlo a null
+            alert.setContentText("Nominativi inseriti erroneamente");
+            alert.showAndWait();
+        }
+        
+        flag = numberControl(number1Field.getText());
+        flag = numberControl(number2Field.getText());
+        flag = numberControl(number3Field.getText());
+        flag = mailControl(email1Field.getText());
+        flag = mailControl(email2Field.getText());
+        flag = mailControl(email3Field.getText());
+        if(!flag){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Errore");
+            alert.setHeaderText(null); // Se non vuoi nessun header, puoi impostarlo a null
+            alert.setContentText("Recapiti inseriti erroneamente");
+            alert.showAndWait();
+        }
+        
+        else{
 
-        flag = false;
-      
-        nameField.clear();
+   
+        contattoSelezionato = new Contatto();
+        contattoSelezionato.setNome(nameField.getText());
+        contattoSelezionato.setCognome(surnameField.getText());
+        contattoSelezionato.setEmail1(email1Field.getText());
+        contattoSelezionato.setEmail2(email2Field.getText());
+        contattoSelezionato.setEmail3(email3Field.getText());
+        contattoSelezionato.setNumero1(number1Field.getText());
+        contattoSelezionato.setNumero2(number2Field.getText());
+        contattoSelezionato.setNumero3(number3Field.getText());
+        this.rubricaPointer.aggiungiContatto(contattoSelezionato);
         
-        alert.showAndWait();
-         
-        
-     }
-     
-     
-     
-    String cognome = surnameField.getText();
-    
-     if(!Character.isLetter(cognome.charAt(0))){
-         
-      Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Errore");
-        alert.setHeaderText(null); // Se non vuoi nessun header, puoi impostarlo a null
-        alert.setContentText("Il cognome non può iniziare con un numero!");
-
-        flag = false;
-      
-         nameField.setText("");
-        
-        alert.showAndWait();
-         
-        
-     }
-    
-    if(nome.equals("") && cognome.equals("")){
-        
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Errore");
-        alert.setHeaderText(null); // Se non vuoi nessun header, puoi impostarlo a null
-        alert.setContentText("E' necessario inserire almeno un nome o un cognome!");
-
-        flag = false;
-      
-        nameField.setText("");
-        alert.showAndWait();
-        
-        
-        
+        javafx.stage.Stage stage = (javafx.stage.Stage) exitButton.getScene().getWindow();
+        super.goBack(stage);
+        }
     }
-     
-     
-     
-    
-    String numero1 = number1Field.getText();
-    String numero2 = number2Field.getText();
-    String numero3 = number3Field.getText();
-    String email1 = email1Field.getText();
-    String email2 = email2Field.getText();
-    String email3 = email3Field.getText();
-    
-    
-    if(flag){
-    
-    
-    Contatto c = new Contatto();
-    
-    
-    c.setNome(nome);
-    c.setCognome(cognome);
-    c.setEmail1(email1);
-    c.setEmail2(email2);
-    c.setEmail3(email3);
-    c.setNumero1(numero1);
-    c.setNumero2(numero2);
-    c.setNumero3(numero3);
-    
-    this.rubricaPointer.aggiungiContatto(c);
-    
-    
+        
+    else{
+        contattoSelezionato.setNome(nameField.getText());
+        contattoSelezionato.setCognome(surnameField.getText());
+        contattoSelezionato.setEmail1(email1Field.getText());
+        contattoSelezionato.setEmail2(email2Field.getText());
+        contattoSelezionato.setEmail3(email3Field.getText());
+        contattoSelezionato.setNumero1(number1Field.getText());
+        contattoSelezionato.setNumero2(number2Field.getText());
+        contattoSelezionato.setNumero3(number3Field.getText());   
         javafx.stage.Stage stage = (javafx.stage.Stage) exitButton.getScene().getWindow();
         
-      super.goBack(stage);
+        super.goBack(stage);
+        }
+    
     
     }
     
-    
+    private boolean numberControl(String number){
+        if(number.isEmpty())
+            return true;
+        if(number.length() != 10)
+            return false;
+        for(int i = 0 ; i < 10 ; i++){
+            if(!Character.isDigit(number.charAt(i)))
+                return false;
+        }
+        return true;
     }
+    
+    private boolean mailControl(String mail){
+        if (mail.isEmpty())
+            return true;
+        String emailRegex = "^[a-zA-Z-.0-9]+@[a-z]+[.]+[a-zA-Z]{2,}$";
+       
+        Pattern pattern = Pattern.compile(emailRegex);
+      
+        return pattern.matcher(mail).matches();
+    }
+    
+    private boolean nominativeControl(String name, String surname){
+        boolean flag = true;
+        if(surnameField.getText().isEmpty())
+            flag = false;
+        else if(flag && !Character.isLetter(surnameField.getText().charAt(0)))
+            flag = false;
+        
+        if(flag && nameField.getText().isEmpty())
+            flag = false;
+        else if(flag && !Character.isLetter(nameField.getText().charAt(0)))
+                flag = false;
+        return flag;
+    }
+    
+    
 }

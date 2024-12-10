@@ -110,7 +110,7 @@ public class Rubrica {
     public Rubrica ricercaContatti(String s){
         Rubrica temp = new Rubrica();
         for(Contatto c : contactList){
-            if(c.getNome().contains(s) || c.getCognome().contains(s))
+            if(c.getNome().toLowerCase().startsWith(s) || c.getCognome().toLowerCase().startsWith(s))
                 temp.aggiungiContatto(c);
         }
         return temp;
