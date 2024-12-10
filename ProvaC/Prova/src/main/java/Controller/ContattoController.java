@@ -327,12 +327,12 @@ public class ContattoController extends Controller implements Initializable {
             alert.showAndWait();
         }
         
-        flag = numberControl(number1Field.getText());
-        flag = numberControl(number2Field.getText());
-        flag = numberControl(number3Field.getText());
-        flag = mailControl(email1Field.getText());
-        flag = mailControl(email2Field.getText());
-        flag = mailControl(email3Field.getText());
+        flag &= numberControl(number1Field.getText());
+        flag &= numberControl(number2Field.getText());
+        flag &= numberControl(number3Field.getText());
+        flag &= mailControl(email1Field.getText());
+        flag &= mailControl(email2Field.getText());
+        flag &= mailControl(email3Field.getText());
         if(!flag){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Errore");
@@ -340,7 +340,6 @@ public class ContattoController extends Controller implements Initializable {
             alert.setContentText("Recapiti inseriti erroneamente");
             alert.showAndWait();
         }
-        
         else{
 
    
