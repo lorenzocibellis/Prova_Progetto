@@ -100,20 +100,20 @@ public class RubricaController extends Controller implements Initializable {
         
        
         
-        EventHandler<MouseEvent> doubleClickHandler = event ->{ //Evento di apertura studente con doppio click
-            if(event.getClickCount() == 2) //controlla il numero di click
+        EventHandler<MouseEvent> ClickHandler = event ->{
+            if(event.isControlDown())
+                contattoPane.getChildren().clear();
+            else
                 try {
-                    
+                        
                     openContact(null); //apre lo studente
-            
-                
-                
-                } catch (IOException ex) {
-                Logger.getLogger(ContattoController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+
+                    } catch (IOException ex) {
+                    Logger.getLogger(ContattoController.class.getName()).log(Level.SEVERE, null, ex);
+                }
         };
         
-        rubricaList.setOnMouseClicked(doubleClickHandler);
+        rubricaList.setOnMouseClicked(ClickHandler);
         
         
         
@@ -170,7 +170,7 @@ public class RubricaController extends Controller implements Initializable {
     private void delete(javafx.event.ActionEvent event) {
     
             rubricaPointer.rimuoviContatto(rubricaList.getSelectionModel().getSelectedItems());
-
+            contattoPane.getChildren().clear();
     
     
     }

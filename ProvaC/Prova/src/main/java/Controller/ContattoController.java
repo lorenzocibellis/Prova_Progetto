@@ -269,9 +269,6 @@ public class ContattoController extends Controller implements Initializable {
      */
     @FXML
     private void delete(javafx.event.ActionEvent event) {
-        modifyButton.setVisible(false);
-        removeButton.setVisible(false);
-        
         ObservableList<Contatto> list;
         list = FXCollections.observableArrayList();
         list.add(contattoSelezionato);
