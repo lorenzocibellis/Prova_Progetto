@@ -21,17 +21,21 @@ import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -174,7 +178,30 @@ public class RubricaController extends Controller implements Initializable {
     @FXML
     private void delete(javafx.event.ActionEvent event) {
     
-            rubricaPointer.rimuoviContatto(rubricaList.getSelectionModel().getSelectedItems());
+        
+             
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    alert.setTitle("Attenzione");
+    alert.setHeaderText(null); //
+    alert.setContentText("Sei sicuro di voler eliminare il/i contatto/i?");
+
+  
+    alert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);    
+    
+    Optional<ButtonType> result = alert.showAndWait();
+    
+    if (result.isPresent()) {
+    
+        if (result.get() == ButtonType.YES) {
+       
+        rubricaPointer.rimuoviContatto(rubricaList.getSelectionModel().getSelectedItems());
+    
+        }
+        
+    }
+        
+        
+            
 
     
     

@@ -16,6 +16,7 @@
                   <Button fx:id="removeButton" layoutX="39.0" layoutY="186.0" mnemonicParsing="false" onAction="#delete" text="Elimina" />
                   <Button fx:id="exitButton" layoutX="38.0" layoutY="243.0" mnemonicParsing="false" onAction="#goBack" text="Annulla" />
                   <Button fx:id="confirmButton" layoutX="32.0" layoutY="120.0" mnemonicParsing="false" onAction="#confirm" text="Conferma" />
+                  <Button fx:id="confermaModButton" layoutX="12.0" layoutY="76.0" mnemonicParsing="false" onAction="#confermaMod" text="Conferma mod" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">

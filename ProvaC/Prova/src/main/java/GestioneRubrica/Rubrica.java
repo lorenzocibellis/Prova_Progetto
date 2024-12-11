@@ -12,6 +12,7 @@
 package GestioneRubrica;
 
 
+import java.util.Collections;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -64,7 +65,7 @@ public class Rubrica {
     public boolean aggiungiContatto(Contatto c){
       
         
-        return this.contactList.add(c);
+          return this.contactList.add(c);
         
         
         
@@ -97,6 +98,14 @@ public class Rubrica {
     }
     
     
+    public ObservableList<Contatto> getContactList() {
+        return contactList;
+    }
+
+    
+    
+    
+    
     
     /**
      * @brief Ricerca nella lista osservabile i contatti avente corrispondenza con la stringa inserita dall'utente
@@ -110,8 +119,10 @@ public class Rubrica {
     public Rubrica ricercaContatti(String s){
         Rubrica temp = new Rubrica();
         for(Contatto c : contactList){
-            if(c.getNome().toLowerCase().startsWith(s) || c.getCognome().toLowerCase().startsWith(s))
+            
+            if(c.getNome().toLowerCase().startsWith(s.toLowerCase()) || c.getCognome().toLowerCase().startsWith(s.toLowerCase()))
                 temp.aggiungiContatto(c);
+        
         }
         return temp;
     }
@@ -158,10 +169,6 @@ public class Rubrica {
     
     
     
-    public ObservableList<Contatto> getContactList() {
-        return contactList;
-    }
-
     
    
     

@@ -23,6 +23,9 @@ import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
+
+import java.util.Collections;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
@@ -30,6 +33,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javax.swing.JOptionPane;
 
 
@@ -105,6 +109,13 @@ public class ContattoController extends Controller implements Initializable {
     /**
      * Bottone per uscire dalla vista corrente.
      */
+    
+    @FXML
+    private javafx.scene.control.Button confermaModButton;
+    
+    
+    
+    
     @FXML
     private javafx.scene.control.Button exitButton;
 
@@ -112,7 +123,8 @@ public class ContattoController extends Controller implements Initializable {
     
     private Contatto contattoSelezionato;
     
-    private boolean typeController;
+    
+    
     
     
     
@@ -138,6 +150,7 @@ public class ContattoController extends Controller implements Initializable {
     email1Field.setText("");
     email2Field.setText("");
     email3Field.setText("");
+    
     contattoSelezionato = null;
     
     
@@ -157,14 +170,16 @@ public class ContattoController extends Controller implements Initializable {
      * 
      * @post Il controller conterrà il riferimento alla rubrica su cui lavorare.
      */
-    @FXML
     public void setController(Rubrica r) {
         // Da implementare
     
    
     this.rubricaPointer = r;
-    typeController = false;
+   
     
+    confermaModButton.setVisible(false);
+    modifyButton.setVisible(false);
+    removeButton.setVisible(false);
     
     }
 
@@ -179,26 +194,29 @@ public class ContattoController extends Controller implements Initializable {
      * 
      * @post il controller conterrà le informazioni di c.
      */
-    @FXML
     public void setController(Contatto c, Rubrica r) {
          
         rubricaPointer=r;
-        typeController = true;
         
-        // Memorizza il contatto passato al controller
+        
+        
+        disableModify();
+        confirmButton.setVisible(false);
+        
+        
         this.contattoSelezionato = c;
 
-        // Popola i campi della GUI con i dati del contatto
+       
         nameField.setText(c.getNome());
         surnameField.setText(c.getCognome());
 
-        // Gestisci l'array di numeri
+       
         String[] numeri = c.getNumeri();
         number1Field.setText(numeri[0]);
         number2Field.setText(numeri[1]);
         number3Field.setText(numeri[2]);
 
-        // Gestisci l'array di email
+       
         String[] emails = c.getEmails();
         email1Field.setText(emails[0]);
         email2Field.setText(emails[1]);
@@ -206,6 +224,10 @@ public class ContattoController extends Controller implements Initializable {
         
     }
 
+    
+    
+    
+    
     /**
      * @brief Disabilita l'interazione con i campi di testo
      *
@@ -213,7 +235,6 @@ public class ContattoController extends Controller implements Initializable {
      * accedibili dall'utente in modalità di sola lettura
      *        
      */
-    @FXML
     public void disableModify() {
        
         this.nameField.setEditable(false);
@@ -226,7 +247,7 @@ public class ContattoController extends Controller implements Initializable {
         this.email3Field.setEditable(false);
 
     }
-
+   
     /**
      * @brief Conferma le modifiche al contatto.
      *
@@ -238,40 +259,15 @@ public class ContattoController extends Controller implements Initializable {
     @FXML
     private void modify(javafx.event.ActionEvent event) {
            // Controlla se il contatto è stato selezionato
-        
-           if (contattoSelezionato == null) {
-            System.out.println("Nessun contatto selezionato.");
-            return;
-        }    
+         this.nameField.setEditable(true);
+        this.surnameField.setEditable(true);
+        this.number1Field.setEditable(true);
+        this.number2Field.setEditable(true);
+        this.number3Field.setEditable(true);
+        this.email1Field.setEditable(true);
+        this.email2Field.setEditable(true);
+        this.email3Field.setEditable(true);
 
-
-        //Salvo i numeri e le mail salvate nei rispettivi array 
-        String[] numeri = {number1Field.getText(),number2Field.getText(),number3Field.getText()};
-
-        String[] emails = {email1Field.getText(),email2Field.getText(),email3Field.getText()};
-
-        // Rimuovi elementi vuoti da numeri ed email
-        //numeri = java.util.Arrays.stream(numeri).filter(n -> !n.isEmpty()).toArray(String[]::new);
-        //emails = java.util.Arrays.stream(emails).filter(e -> !e.isEmpty()).toArray(String[]::new);
-
-        // Modifico i campi del contatto selezionato, richiamando i metodi impiegati per i campi della GUI
-        contattoSelezionato.setNome(nameField.getText());
-        contattoSelezionato.setCognome(surnameField.getText());
-        contattoSelezionato.setEmail1(email1Field.getText());
-        contattoSelezionato.setEmail2(email2Field.getText());
-        contattoSelezionato.setEmail3(email3Field.getText());
-        contattoSelezionato.setNumero1(number1Field.getText());
-        contattoSelezionato.setNumero2(number2Field.getText());
-        contattoSelezionato.setNumero3(number3Field.getText());
-
-        // Opzionale: salva il contatto nella rubrica, se necessario
-        // rubrica.salvaContatto(contattoSelezionato);
-
-        // Notifica che le modifiche sono state salvate
-        System.out.println("Modifiche salvate per: " + contattoSelezionato.getNome() + " " + contattoSelezionato.getCognome());
-
-        // Disabilita i campi di modifica dopo aver salvato le modifiche
-        disableModify();   
 
     }
 
@@ -287,13 +283,37 @@ public class ContattoController extends Controller implements Initializable {
     @FXML
     private void delete(javafx.event.ActionEvent event) {
        
+        
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+    alert.setTitle("Attenzione");
+    alert.setHeaderText(null); //
+    alert.setContentText("Sei sicuro di voler eliminare il contatto?");
+
+  
+    alert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);    
+    Optional<ButtonType> result = alert.showAndWait();
+    
+    if (result.isPresent()) {
+    
+        if (result.get() == ButtonType.YES) {
+       
         ObservableList<Contatto> list;
         list = FXCollections.observableArrayList();
         list.add(contattoSelezionato);
         rubricaPointer.rimuoviContatto(list);
-
+    
+         javafx.stage.Stage stage = (javafx.stage.Stage) removeButton.getScene().getWindow();
+            super.goBack(stage);
+           
+        
+        }
+        
     }
-
+    
+        
+    }
+    
+    
     /**
      * @brief Elimina il contatto corrente.
      *
@@ -314,84 +334,162 @@ public class ContattoController extends Controller implements Initializable {
 
     @FXML
     private void confirm(javafx.event.ActionEvent event) {
-    boolean flag;
-    if(typeController == false){
-        
-        flag = nominativeControl(nameField.getText(), surnameField.getText());
-        
-        if(!flag){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Errore");
-            alert.setHeaderText(null); // Se non vuoi nessun header, puoi impostarlo a null
-            alert.setContentText("Nominativi inseriti erroneamente");
-            alert.showAndWait();
-        }
-        
-        flag = numberControl(number1Field.getText());
-        flag = numberControl(number2Field.getText());
-        flag = numberControl(number3Field.getText());
-        flag = mailControl(email1Field.getText());
-        flag = mailControl(email2Field.getText());
-        flag = mailControl(email3Field.getText());
-        if(!flag){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Errore");
-            alert.setHeaderText(null); // Se non vuoi nessun header, puoi impostarlo a null
-            alert.setContentText("Recapiti inseriti erroneamente");
-            alert.showAndWait();
-        }
-        
-        else{
+    
+       boolean flag = true;
 
+
+            if (!nominativeControl(nameField.getText(), surnameField.getText())) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                     alert.setTitle("Errore");
+                    alert.setHeaderText(null); // Se non vuoi nessun header, puoi impostarlo a null
+                    alert.setContentText("Nominativi inseriti erroneamente");
+                    alert.showAndWait();
+                    flag = false;
+                }
+
+                
+    
+            if (!(numberControl(number1Field.getText())
+                    && numberControl(number2Field.getText())
+                    && numberControl(number3Field.getText())
+                    && mailControl(email1Field.getText())
+                    && mailControl(email2Field.getText())
+                    && mailControl(email3Field.getText()))) 
+    
+                {
+    
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Errore");
+                    alert.setHeaderText(null); // Se non vuoi nessun header, puoi impostarlo a null
+                    alert.setContentText("Recapiti inseriti erroneamente");
+                    alert.showAndWait();
+                    flag = false;
+    
+    }
+
+
+
+                if (flag) {
+                        contattoSelezionato = new Contatto();
+                        contattoSelezionato.setNome(nameField.getText());
+                        contattoSelezionato.setCognome(surnameField.getText());
+                        contattoSelezionato.setEmail1(email1Field.getText());
+                        contattoSelezionato.setEmail2(email2Field.getText());
+                        contattoSelezionato.setEmail3(email3Field.getText());
+                        contattoSelezionato.setNumero1(number1Field.getText());
+                        contattoSelezionato.setNumero2(number2Field.getText());
+                        contattoSelezionato.setNumero3(number3Field.getText());
+                    this.rubricaPointer.aggiungiContatto(contattoSelezionato);
+
+            javafx.stage.Stage stage = (javafx.stage.Stage) exitButton.getScene().getWindow();
+            super.goBack(stage);
+        }
+    
+    
+    
+    }
+    
    
-        contattoSelezionato = new Contatto();
-        contattoSelezionato.setNome(nameField.getText());
-        contattoSelezionato.setCognome(surnameField.getText());
-        contattoSelezionato.setEmail1(email1Field.getText());
-        contattoSelezionato.setEmail2(email2Field.getText());
-        contattoSelezionato.setEmail3(email3Field.getText());
-        contattoSelezionato.setNumero1(number1Field.getText());
-        contattoSelezionato.setNumero2(number2Field.getText());
-        contattoSelezionato.setNumero3(number3Field.getText());
-        this.rubricaPointer.aggiungiContatto(contattoSelezionato);
-        
-        javafx.stage.Stage stage = (javafx.stage.Stage) exitButton.getScene().getWindow();
-        super.goBack(stage);
-        }
+     @FXML
+    private void confermaMod(javafx.event.ActionEvent event) {
+    
+      if (contattoSelezionato == null) {
+            System.out.println("Nessun contatto selezionato.");
+            return;
+        }    
+ 
+      
+      boolean flag = true;
+
+
+            if (!nominativeControl(nameField.getText(), surnameField.getText())) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                     alert.setTitle("Errore");
+                    alert.setHeaderText(null); // Se non vuoi nessun header, puoi impostarlo a null
+                    alert.setContentText("Nominativi modificati erroneamente");
+                    alert.showAndWait();
+                    flag = false;
+                }
+
+                
+    
+            if (!(numberControl(number1Field.getText())
+                    && numberControl(number2Field.getText())
+                    && numberControl(number3Field.getText())
+                    && mailControl(email1Field.getText())
+                    && mailControl(email2Field.getText())
+                    && mailControl(email3Field.getText()))) 
+    
+                {
+    
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Errore");
+                    alert.setHeaderText(null); // Se non vuoi nessun header, puoi impostarlo a null
+                    alert.setContentText("Recapiti modificati erroneamente");
+                    alert.showAndWait();
+                    flag = false;
+    
     }
-        
-    else{
-        contattoSelezionato.setNome(nameField.getText());
-        contattoSelezionato.setCognome(surnameField.getText());
-        contattoSelezionato.setEmail1(email1Field.getText());
-        contattoSelezionato.setEmail2(email2Field.getText());
-        contattoSelezionato.setEmail3(email3Field.getText());
-        contattoSelezionato.setNumero1(number1Field.getText());
-        contattoSelezionato.setNumero2(number2Field.getText());
-        contattoSelezionato.setNumero3(number3Field.getText());   
-        javafx.stage.Stage stage = (javafx.stage.Stage) exitButton.getScene().getWindow();
-        
-        super.goBack(stage);
-        }
+
+
+
+                if (flag) {
+                        
+                        contattoSelezionato.setNome(nameField.getText());
+                        contattoSelezionato.setCognome(surnameField.getText());
+                        contattoSelezionato.setEmail1(email1Field.getText());
+                        contattoSelezionato.setEmail2(email2Field.getText());
+                        contattoSelezionato.setEmail3(email3Field.getText());
+                        contattoSelezionato.setNumero1(number1Field.getText());
+                        contattoSelezionato.setNumero2(number2Field.getText());
+                        contattoSelezionato.setNumero3(number3Field.getText());
+                  
+                        Collections.sort(rubricaPointer.getContactList());
+
+            javafx.stage.Stage stage = (javafx.stage.Stage) exitButton.getScene().getWindow();
+            super.goBack(stage);
+           
+    
+    }
+    
+    }
     
     
-    }
+    
+    
+    
+    
+    
+    
+    
     
     private boolean numberControl(String number){
-        if(number.isEmpty())
+        
+        if(number.isEmpty()){
             return true;
+        }
+        
+        
         if(number.length() != 10)
             return false;
+        
+        
         for(int i = 0 ; i < 10 ; i++){
             if(!Character.isDigit(number.charAt(i)))
                 return false;
         }
+        
         return true;
+    
+    
     }
     
     private boolean mailControl(String mail){
-        if (mail.isEmpty())
+        if (mail.isEmpty()){
             return true;
+        }
+        
+        
         String emailRegex = "^[a-zA-Z-.0-9]+@[a-z]+[.]+[a-zA-Z]{2,}$";
        
         Pattern pattern = Pattern.compile(emailRegex);
@@ -401,17 +499,35 @@ public class ContattoController extends Controller implements Initializable {
     
     private boolean nominativeControl(String name, String surname){
         boolean flag = true;
-        if(surnameField.getText().isEmpty())
+    
+        if(surnameField.getText().isEmpty() && nameField.getText().isEmpty()) {
             flag = false;
-        else if(flag && !Character.isLetter(surnameField.getText().charAt(0)))
-            flag = false;
-        
-        if(flag && nameField.getText().isEmpty())
-            flag = false;
-        else if(flag && !Character.isLetter(nameField.getText().charAt(0)))
-                flag = false;
-        return flag;
+        } else {
+   
+            if(!surnameField.getText().isEmpty()){
+                
+                
+                flag = Character.isLetter(surnameField.getText().charAt(0));
+                
+            }
+            
+            if(!nameField.getText().isEmpty()){
+                
+                
+                flag = Character.isLetter(nameField.getText().charAt(0));
+                
+            }
+            
+            
+      
+        }
+            
+
+            return flag;
     }
+
+   
+    
     
     
 }
