@@ -32,6 +32,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.layout.StackPane;
 import javax.swing.JOptionPane;
 
 
@@ -115,6 +116,8 @@ public class ContattoController extends Controller implements Initializable {
     private Contatto contattoSelezionato;
     
     private boolean typeController;
+    @FXML
+    private StackPane contactPane;
     
     
     
@@ -160,7 +163,6 @@ public class ContattoController extends Controller implements Initializable {
      * 
      * @post Il controller conterrà il riferimento alla rubrica su cui lavorare.
      */
-    @FXML
     public void setController(Rubrica r) {
         // Da implementare
     
@@ -185,7 +187,6 @@ public class ContattoController extends Controller implements Initializable {
      * 
      * @post il controller conterrà le informazioni di c.
      */
-    @FXML
     public void setController(Contatto c, Rubrica r) {
          
         rubricaPointer=r;
@@ -225,7 +226,6 @@ public class ContattoController extends Controller implements Initializable {
      * accedibili dall'utente in modalità di sola lettura
      *        
      */
-    @FXML
     public void disableModify(boolean disable) {
        
         this.nameField.setEditable(!disable);
@@ -276,6 +276,7 @@ public class ContattoController extends Controller implements Initializable {
         list = FXCollections.observableArrayList();
         list.add(contattoSelezionato);
         rubricaPointer.rimuoviContatto(list);
+        contactPane.getChildren().clear();
         
 
     }
