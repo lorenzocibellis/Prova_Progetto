@@ -77,7 +77,7 @@ public class RubricaController extends Controller implements Initializable {
     private javafx.scene.control.Button exitButton;
             
     
-    ContattoController contattoController;
+    private ContattoController contattoController;
     @FXML
     private StackPane contattoPane;
     
