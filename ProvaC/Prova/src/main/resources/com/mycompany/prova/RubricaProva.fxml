@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RubricaController">
+<StackPane id="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RubricaController">
    <children>
       <SplitPane dividerPositions="0.6617886178861788" layoutY="-1.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
         <items>
@@ -39,11 +39,11 @@
                   <Button fx:id="exitButton" alignment="CENTER" mnemonicParsing="false" onAction="#goBack" prefWidth="300" text="exit" />
                </children>
             </VBox>
-            <AnchorPane fx:id="contattoPane" prefHeight="200.0" prefWidth="200.0">
+            <StackPane fx:id="contattoPane" prefHeight="200.0" prefWidth="200.0">
                <children>
                            <fx:include source="Contatto.fxml" />
-               </children></AnchorPane>
+               </children></StackPane>
         </items>
       </SplitPane>
    </children>
-</AnchorPane>
+</StackPane>

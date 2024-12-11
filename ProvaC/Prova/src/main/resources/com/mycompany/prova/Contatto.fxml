@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ContattoController">
+<StackPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ContattoController">
    <children>
       <VBox spacing="20">
                <children>
@@ -64,4 +64,4 @@
                </children>
             </VBox>
    </children>
-</AnchorPane>
+</StackPane>

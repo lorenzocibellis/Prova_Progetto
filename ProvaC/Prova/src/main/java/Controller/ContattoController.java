@@ -164,6 +164,9 @@ public class ContattoController extends Controller implements Initializable {
    
     this.rubricaPointer = r;
     typeController = false;
+    modifyButton.setVisible(false);
+    removeButton.setVisible(false);
+    
     
     
     }
@@ -203,6 +206,11 @@ public class ContattoController extends Controller implements Initializable {
         email1Field.setText(emails[0]);
         email2Field.setText(emails[1]);
         email3Field.setText(emails[2]);
+        
+        confirmButton.setVisible(false);
+        exitButton.setVisible(false);
+        
+        
         
     }
 

@@ -43,6 +43,7 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -78,7 +79,7 @@ public class RubricaController extends Controller implements Initializable {
     
     ContattoController contattoController;
     @FXML
-    private AnchorPane contattoPane;
+    private StackPane contattoPane;
     
      @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -152,7 +153,7 @@ public class RubricaController extends Controller implements Initializable {
         
         contattoPane.setVisible(true);
         FXMLLoader loader = App.getFXML("Contatto");
-    AnchorPane contactPane = loader.load();
+    StackPane contactPane = loader.load();
 
     ContattoController controller = loader.getController();
         controller.setController(temp, rubricaPointer);
