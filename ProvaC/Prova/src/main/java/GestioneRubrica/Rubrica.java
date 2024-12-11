@@ -12,6 +12,13 @@
 package GestioneRubrica;
 
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Collections;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -141,8 +148,43 @@ public class Rubrica {
      * 
      * 
      */
-    public void importaRubrica(String nomefile){
+    public Rubrica importaRubrica(String nomefile) throws FileNotFoundException, IOException{
     
+        Rubrica r = new Rubrica();
+
+    try (BufferedReader br = new BufferedReader(new FileReader(nomefile))) {
+        String line;
+        br.readLine(); 
+
+        while ((line = br.readLine()) != null) { 
+            
+            
+            String[] fields = line.split(";", -1); // Usa -1 per mantenere i campi vuoti
+            
+            Contatto c = new Contatto();
+            
+            c.setCognome(fields[0]);
+            c.setNome(fields[1]);
+            c.setNumero1(fields[2].isEmpty() ? "" : fields[2]);
+            c.setNumero2(fields[3].isEmpty() ? "" : fields[3]);
+            c.setNumero3(fields[4].isEmpty() ? "" : fields[4]);
+            c.setEmail1(fields[5].isEmpty() ? "" : fields[5]);
+            c.setEmail2(fields[6].isEmpty() ? "" : fields[6]);
+            c.setEmail3(fields[7].isEmpty() ? "" : fields[7]);
+
+            r.aggiungiContatto(c); 
+        
+        
+        }
+    } catch (IOException e) {
+        
+        System.err.println("Errore durante la lettura del file: ");
+        
+    }
+
+    return r;
+        
+        
     }
     
     /**
@@ -159,7 +201,59 @@ public class Rubrica {
      * 
      * 
      */
-    public void esportaRubrica(String nomefile){
+    public void esportaRubrica(String nomefile) throws IOException{
+    
+   
+     try(PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(nomefile)))) {   
+            
+            pw.println("COGNOME;NOME;NUMERO 1;NUMERO 2;NUMERO 3;EMAIL 1;EMAIL 2; EMAIL3");   
+            
+            
+            for(Contatto c : contactList){
+                
+               
+                pw.print(c.getCognome());
+                pw.append(';');
+                
+                
+                pw.print(c.getNome());
+                pw.append(';');          
+                
+                
+                String[] numeri = c.getNumeri();
+                
+                pw.print(numeri[0]);
+                pw.append(';'); 
+                pw.print(numeri[1]);
+                pw.append(';'); 
+                pw.print(numeri[2]);
+                pw.append(';'); 
+                
+                String[] emails = c.getEmails();
+                
+                pw.print(emails[0]);
+                pw.append(';'); 
+                pw.print(emails[1]);
+                pw.append(';'); 
+                
+                pw.println(emails[2]);
+                
+                
+            
+            }
+            
+            
+        }catch (IOException e) {
+        
+        System.err.println("Errore durante la scrittura del file: ");
+        
+    }
+        
+    
+    
+    
+    
+    
     
     }
 

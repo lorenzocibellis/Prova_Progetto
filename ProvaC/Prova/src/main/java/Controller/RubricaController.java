@@ -19,6 +19,7 @@ import com.mycompany.prova.App;
 import java.awt.Button;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -46,6 +47,7 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -208,13 +210,86 @@ public class RubricaController extends Controller implements Initializable {
     }
 
     @FXML
-    private void importRubrica(javafx.event.ActionEvent event) {
+    private void importRubrica(javafx.event.ActionEvent event) throws IOException {
+    
+        FileChooser fileChooser = new FileChooser();
+        
+        
+    FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("CSV Files (*.csv)", "*.csv");
+    fileChooser.getExtensionFilters().add(filter);
+
+
+    File file = fileChooser.showOpenDialog(null);
+
+        if (file != null) { 
+            
+            try {
+       
+        Rubrica nuovaRubrica = rubricaPointer.importaRubrica(file.getAbsolutePath());
+        
+        
+            rubricaPointer.rimuoviContatto(rubricaPointer.getContactList()); // rimuovi tutti i vecchi contatti in rubrica
+            rubricaPointer = nuovaRubrica;
+            
+            System.out.println("Rubrica importata con successo!");
+       
+            rubricaList.setItems(rubricaPointer.getContactList());
+        
+    } catch (IOException e) {
+        
+        System.err.println("Errore durante l'importazione del file: " + e.getMessage());
+     
+    }
+        
+        
+        
+        } else {
+    
+                System.out.println("Selezione del file annullata.");
+            }
+    
+     
+
+
     }
 
+    
+    
+    
     @FXML
-    private void exportRubrica(javafx.event.ActionEvent event) {
-    }
+    private void exportRubrica(javafx.event.ActionEvent event) throws IOException {
+    
+     
+   FileChooser fileChooser = new FileChooser();
 
+   
+    FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("CSV Files (*.csv)", "*.csv");
+    fileChooser.getExtensionFilters().add(filter);
+    
+    File file = fileChooser.showSaveDialog(null); 
+    
+       
+    if(file != null){
+    
+    
+        rubricaPointer.esportaRubrica(file.getAbsolutePath());
+    
+    }else{
+        
+        System.out.println("Esportazione annullata");
+        
+    }
+    
+    
+    }
+    
+    
+    
+    
+        
+    
+    
+    
     @FXML
     private void research(javafx.event.ActionEvent event) {
     
