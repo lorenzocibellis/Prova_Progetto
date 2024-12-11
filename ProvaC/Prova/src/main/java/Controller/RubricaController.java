@@ -231,10 +231,18 @@ public class RubricaController extends Controller implements Initializable {
             rubricaPointer.rimuoviContatto(rubricaPointer.getContactList()); // rimuovi tutti i vecchi contatti in rubrica
             rubricaPointer = nuovaRubrica;
             
-            System.out.println("Rubrica importata con successo!");
-       
+            
             rubricaList.setItems(rubricaPointer.getContactList());
         
+            
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                     alert.setTitle("Avviso");
+                    alert.setHeaderText(null); // Se non vuoi nessun header, puoi impostarlo a null
+                    alert.setContentText("La rubrica è stata importata con successo!");
+                    alert.showAndWait();
+            
+            
+            
     } catch (IOException e) {
         
         System.err.println("Errore durante l'importazione del file: " + e.getMessage());
@@ -273,7 +281,14 @@ public class RubricaController extends Controller implements Initializable {
     
     
         rubricaPointer.esportaRubrica(file.getAbsolutePath());
-    
+   
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                     alert.setTitle("Avviso");
+                    alert.setHeaderText(null); // Se non vuoi nessun header, puoi impostarlo a null
+                    alert.setContentText("La rubrica è stata esportata con successo!");
+                    alert.showAndWait();
+        
+        
     }else{
         
         System.out.println("Esportazione annullata");

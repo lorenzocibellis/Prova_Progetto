@@ -69,12 +69,16 @@ public class Rubrica {
     * 
     * 
     */
-    public boolean aggiungiContatto(Contatto c){
+    public void aggiungiContatto(Contatto c){
       
         
-          return this.contactList.add(c);
+          this.contactList.add(c);
         
-        
+         Collections.sort(contactList);
+          
+          
+          
+          
         
     }
     
@@ -126,8 +130,8 @@ public class Rubrica {
     public Rubrica ricercaContatti(String s){
         Rubrica temp = new Rubrica();
         for(Contatto c : contactList){
-            
-            if(c.getNome().toLowerCase().startsWith(s.toLowerCase()) || c.getCognome().toLowerCase().startsWith(s.toLowerCase()))
+            s = s.toLowerCase();
+            if(c.getNome().toLowerCase().startsWith(s) || c.getCognome().toLowerCase().startsWith(s))
                 temp.aggiungiContatto(c);
         
         }
