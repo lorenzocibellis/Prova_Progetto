@@ -1,6 +1,6 @@
-Controller/ContattoController.class
-com/mycompany/prova/App.class
-Controller/RubricaController.class
-GestioneRubrica/Contatto.class
-Controller/Controller.class
-GestioneRubrica/Rubrica.class
+com\mycompany\prova\App.class
+GestioneRubrica\Contatto.class
+Controller\Controller.class
+Controller\RubricaController.class
+Controller\ContattoController.class
+GestioneRubrica\Rubrica.class

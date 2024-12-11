@@ -25,6 +25,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -140,7 +142,8 @@ public class ContattoController extends Controller implements Initializable {
     email3Field.setText("");
     contattoSelezionato = null;
     
-    
+    confirmButton.disableProperty().bind(Bindings.createBooleanBinding(
+            () -> (nameField.getText().isEmpty() && surnameField.getText().isEmpty()), nameField.textProperty(), surnameField.textProperty()));
     
     }
     
@@ -209,6 +212,7 @@ public class ContattoController extends Controller implements Initializable {
         
         confirmButton.setVisible(false);
         exitButton.setVisible(false);
+        disableModify(true);
         
         
         
@@ -222,16 +226,16 @@ public class ContattoController extends Controller implements Initializable {
      *        
      */
     @FXML
-    public void disableModify() {
+    public void disableModify(boolean disable) {
        
-        this.nameField.setEditable(false);
-        this.surnameField.setEditable(false);
-        this.number1Field.setEditable(false);
-        this.number2Field.setEditable(false);
-        this.number3Field.setEditable(false);
-        this.email1Field.setEditable(false);
-        this.email2Field.setEditable(false);
-        this.email3Field.setEditable(false);
+        this.nameField.setEditable(!disable);
+        this.surnameField.setEditable(!disable);
+        this.number1Field.setEditable(!disable);
+        this.number2Field.setEditable(!disable);
+        this.number3Field.setEditable(!disable);
+        this.email1Field.setEditable(!disable);
+        this.email2Field.setEditable(!disable);
+        this.email3Field.setEditable(!disable);
 
     }
 
@@ -245,41 +249,12 @@ public class ContattoController extends Controller implements Initializable {
      */
     @FXML
     private void modify(javafx.event.ActionEvent event) {
-           // Controlla se il contatto è stato selezionato
+
+        modifyButton.setVisible(false);
+        confirmButton.setVisible(true);
         
-           if (contattoSelezionato == null) {
-            System.out.println("Nessun contatto selezionato.");
-            return;
-        }    
-
-
-        //Salvo i numeri e le mail salvate nei rispettivi array 
-        String[] numeri = {number1Field.getText(),number2Field.getText(),number3Field.getText()};
-
-        String[] emails = {email1Field.getText(),email2Field.getText(),email3Field.getText()};
-
-        // Rimuovi elementi vuoti da numeri ed email
-        //numeri = java.util.Arrays.stream(numeri).filter(n -> !n.isEmpty()).toArray(String[]::new);
-        //emails = java.util.Arrays.stream(emails).filter(e -> !e.isEmpty()).toArray(String[]::new);
-
-        // Modifico i campi del contatto selezionato, richiamando i metodi impiegati per i campi della GUI
-        contattoSelezionato.setNome(nameField.getText());
-        contattoSelezionato.setCognome(surnameField.getText());
-        contattoSelezionato.setEmail1(email1Field.getText());
-        contattoSelezionato.setEmail2(email2Field.getText());
-        contattoSelezionato.setEmail3(email3Field.getText());
-        contattoSelezionato.setNumero1(number1Field.getText());
-        contattoSelezionato.setNumero2(number2Field.getText());
-        contattoSelezionato.setNumero3(number3Field.getText());
-
-        // Opzionale: salva il contatto nella rubrica, se necessario
-        // rubrica.salvaContatto(contattoSelezionato);
-
-        // Notifica che le modifiche sono state salvate
-        System.out.println("Modifiche salvate per: " + contattoSelezionato.getNome() + " " + contattoSelezionato.getCognome());
-
-        // Disabilita i campi di modifica dopo aver salvato le modifiche
-        disableModify();   
+        disableModify(false);
+        
 
     }
 
@@ -294,11 +269,14 @@ public class ContattoController extends Controller implements Initializable {
      */
     @FXML
     private void delete(javafx.event.ActionEvent event) {
-       
+        modifyButton.setVisible(false);
+        removeButton.setVisible(false);
+        
         ObservableList<Contatto> list;
         list = FXCollections.observableArrayList();
         list.add(contattoSelezionato);
         rubricaPointer.rimuoviContatto(list);
+        
 
     }
 
@@ -407,17 +385,9 @@ public class ContattoController extends Controller implements Initializable {
     }
     
     private boolean nominativeControl(String name, String surname){
-        boolean flag = true;
-        if(surnameField.getText().isEmpty())
-            flag = false;
-        else if(flag && !Character.isLetter(surnameField.getText().charAt(0)))
-            flag = false;
-        
-        if(flag && nameField.getText().isEmpty())
-            flag = false;
-        else if(flag && !Character.isLetter(nameField.getText().charAt(0)))
-                flag = false;
-        return flag;
+        if (!name.isEmpty() && Character.isLetter(name.charAt(0)))
+            return true;
+        return ( !surname.isEmpty() && Character.isLetter(surname.charAt(0)) );
     }
     
     
